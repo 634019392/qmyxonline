@@ -1,0 +1,88 @@
+<view class='ticket-container'>
+    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}"
+                 scroll-top="{{scrollTop}}">
+        <!--Tab布局-->
+        <view class='title'>
+            <view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='0'>
+                <text>未到访</text>
+                <hr class="line-style"/>
+            </view>
+
+            <view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='1'>
+                <text>已到访</text>
+                <hr class="line-style"/>
+            </view>
+            <view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
+                <text>已认购</text>
+                <hr class="line-style" />
+            </view>
+            <view class="{{3 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='3'>
+                <text>已签约</text>
+                <hr class="line-style" />
+            </view>
+            <view class="{{4 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='4'>
+                <text>已过期</text>
+                <hr class="line-style" />
+            </view>
+        </view>
+
+        <!--内容布局-->
+        <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}' style="height: {{height}}rpx" >
+            <swiper-item class='swiper'>
+                <view wx:for="{{firstList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
+                    <view class='name'>
+                        <view class="name-row1">{{item.truename}}</view>
+                        <view class="name-row2">
+                            <view>{{item.house}}</view>
+                            <view>{{item.phone}}</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiper'>
+                <view wx:for="{{secondList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
+                    <view class='name'>
+                        <view class="name-row1">{{item.truename}}</view>
+                        <view class="name-row2">
+                            <view>{{item.house}}</view>
+                            <view>{{item.phone}}</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiper'>
+                <view wx:for="{{thirdList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
+                    <view class='name'>
+                        <view class="name-row1">{{item.truename}}</view>
+                        <view class="name-row2">
+                            <view>{{item.house}}</view>
+                            <view>{{item.phone}}</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiper'>
+                <view wx:for="{{fourthList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
+                    <view class='name'>
+                        <view class="name-row1">{{item.truename}}</view>
+                        <view class="name-row2">
+                            <view>{{item.house}}</view>
+                            <view>{{item.phone}}</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiper'>
+                <view wx:for="{{fifthList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
+                    <view class='name'>
+                        <view class="name-row1">{{item.truename}}</view>
+                        <view class="name-row2">
+                            <view>{{item.house}}</view>
+                            <view>{{item.phone}}</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </scroll-view>
+</view>

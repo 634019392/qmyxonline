@@ -1,0 +1,186 @@
+<!-- 容器 -->
+<view class="container">
+    <swiper class="swiper-img" autoplay="false" circular="{{true}}" indicator-dots="{{true}}" style="height: {{Hei}}">
+        <swiper-item>
+            <image src="{{img}}" mode="widthFix" bindload='imgH'/>
+        </swiper-item>
+    </swiper>
+
+    <!--简单信息-->
+    <view class="house-row1">
+        <view class="house-row1-row1">
+            <view class="house-title">{{name}}</view>
+            <!--<view class="house-online-buy">网上认购</view>-->
+        </view>
+        <view class="house-row1-row2">
+            <view class="house-row1-row2-left">
+                <view class="house-tag">
+                    <view class="house-tag-item">城市中心</view>
+                    <view class="house-tag-item">双湖环绕</view>
+                    <view class="house-tag-item">现代中式</view>
+                </view>
+                <view class="house-reference">
+                    <span><text class="iconfont icon-accountbook"></text>参考价格</span>
+                    <text class="reference-font">高层 {{reference}}元/㎡</text>
+                </view>
+                <view class="house-phone">
+                    <span><text class="iconfont icon-phone"></text>项目热线</span>
+                    <text class="phone-font">{{phone}}</text>
+                </view>
+                <view class="house-address">
+                    <span><text class="iconfont icon-car"></text>项目地址</span>
+                    <text class="address-font">{{address}}</text>
+                </view>
+            </view>
+            <view class="house-row1-row2-right">
+                <!--<view>-->
+                <!--<view>优惠海报</view>-->
+                <!--</view>-->
+                <!--<view>楼盘公众号</view>-->
+            </view>
+        </view>
+        <!--<view class="house-row1-row3">-->
+            <!--<view class="house-row1-row3-left">-->
+                <!--<text class="iconfont icon-rencai"></text>-->
+                <!--<span>联系置业顾问</span></view>-->
+            <!--<view class="house-row1-row3-right">-->
+                <!--<text class="iconfont icon-calendar-check-fill"></text>-->
+                <!--<span>查看房源价格 网上认购</span></view>-->
+        <!--</view>-->
+        <!--<view class="house-row1-row4">-->
+        <!--<view>平</view>-->
+        <!--<view>行</view>-->
+        <!--<view>翻</view>-->
+        <!--<view>页</view>-->
+        <!--<view>图</view>-->
+        <!--<view>片</view>-->
+        <!--</view>-->
+    </view>
+
+    <!--<view class="house-row2">-->
+    <!--<view>-->
+    <!--<view class="house-title">VR看房</view>-->
+    <!--<view>-->
+    <!--<cover-image src="/images/login/wechat.png"></cover-image>-->
+    <!--<view>-->
+    <!--内容-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--<view>-->
+    <!--<view class="house-title">总规划平面示意图</view>-->
+    <!--<view>-->
+    <!--<cover-image src="/images/login/wechat.png"></cover-image>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+
+    <view class="house-row3">
+        <view class="house-title">户型图</view>
+        <view class="house-row3-content">
+            <view class="page-section-spacing">
+                <scroll-view class="scroll-view_H" enable-flex="true" scroll-x="true" bindscroll="scroll" style="width: 100%">
+
+                    <view class="scroll-view-item_H" wx:for="{{house_floors}}" wx:key="item.id">
+                        <image class="floor-plan-img" src="{{item.floor_plan}}"></image>
+                        <view class="house-floor-plan-text">
+                            <view class="house-floor-plan-text-row1">
+                                {{item.floor_row1}}
+                            </view>
+                            <view class="house-floor-plan-text-row2">
+                                {{item.floor_row2}}
+                            </view>
+                            <view class="house-floor-plan-text-row3">
+                                {{item.floor_row3}}
+                            </view>
+                        </view>
+                    </view>
+
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+
+    <view class="house-row4">
+        <view class="house-title">周边配套</view>
+        <view class="house-row4-info">
+            <view class="house-row4-title">交通配套：</view>
+            <view class="house-row4-content">{{traffic}}</view>
+        </view>
+        <view class="house-row4-info">
+            <view class="house-row4-title">教育配套：</view>
+            <view class="house-row4-content">{{education}}</view>
+        </view>
+        <view class="house-row4-info">
+            <view class="house-row4-title">医疗配套：</view>
+            <view class="house-row4-content">{{medical}}</view>
+        </view>
+        <view class="house-row4-info">
+            <view class="house-row4-title">商业配套：</view>
+            <view class="house-row4-content">{{business}}</view>
+        </view>
+        <view class="house-row4-info">
+            <view class="house-row4-title">其他配套：</view>
+            <view class="house-row4-content">{{other}}</view>
+        </view>
+    </view>
+
+    <view class="house-row5">
+        <view class="house-title">楼盘介绍</view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">开盘日期：</view>
+            <view class="house-row5-info-content">{{open_time}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">楼盘特色：</view>
+            <view class="house-row5-info-content">{{feature}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">产品类型：</view>
+            <view class="house-row5-info-content">{{type}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">装修状况：</view>
+            <view class="house-row5-info-content">{{decor}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">占地面积：</view>
+            <view class="house-row5-info-content">{{floor_space}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">产 权 ：</view>
+            <view class="house-row5-info-content">{{property_right}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">绿 化 率：</view>
+            <view class="house-row5-info-content">{{greening}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">容 积 率：</view>
+            <view class="house-row5-info-content">{{plot}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">物业公司：</view>
+            <view class="house-row5-info-content">{{property_name}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">交付日期：</view>
+            <view class="house-row5-info-content">{{delivery_time}}</view>
+        </view>
+    </view>
+
+    <!-- 回到顶部 -->
+    <view class="gototop">
+        <text class="iconfont font30 icon-fanhuidingbu" bindtap="scroTop"></text>
+    </view>
+
+    <!--底部栏-->
+    <view class="house-footer">
+        <view class="house-footer-flex">
+            <view></view>
+            <view class="house-footer-flex-btn" bind:tap="reaveBuyer">
+                立即推荐
+            </view>
+        </view>
+    </view>
+</view>

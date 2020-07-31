@@ -1,0 +1,247 @@
+.container{
+  padding-bottom: 10%;
+}
+
+.scroll-view_H{
+  white-space: nowrap;
+}
+
+.scroll-view-item_H{
+  display: inline-block;
+  width: 43%;
+  height: 300rpx;
+  padding:20rpx;
+}
+
+/* 回到顶部 */
+.gototop{
+    position: fixed;
+    bottom: 110rpx;
+    left: 50rpx;
+    color: #ccc;
+}
+.font30{
+    font-size: 40px;
+}
+/* 幻灯片 */
+.swiper-img image {
+    width: 750rpx;
+    height: 350rpx;
+}
+
+
+
+.house-floor-plan-text {
+  /*此处flex布局老是出现问题*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  color: #787d82;
+  font-size: 80%;
+  /*强制换行加换行*/
+  display:block;
+  /*white-space:pre-line;*/
+  word-break:break-all;
+  text-align: center;
+}
+
+
+.house-title {
+  font-size:45rpx;
+  border-left:15rpx solid #21B97A;
+  padding-left:23rpx;
+  margin-bottom:13px;
+}
+.house-row1 {
+  background-color:white;
+  padding:16px;
+  margin-bottom:20rpx;
+}
+.house-row1-row1 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-between;
+}
+.house-row1-row2 {
+  display:flex;
+  flex:row wrap;
+  justify-content:space-between;
+}
+.house-row1-row2-left .house-tag {
+  display:flex;
+  flex:row wrap;
+  justify-content:flex-start;
+  margin-bottom:20rpx;
+}
+.house-row1-row2-left .house-reference {
+  margin-bottom:20rpx;
+}
+.house-reference span{
+  color: #787d82;
+}
+.house-reference span text {
+  margin-right: 10rpx;
+}
+.house-reference .reference-font {
+  margin-left: 10rpx;
+  font-weight: bold;
+  color: #E9747D;
+}
+.house-row1-row2-left .house-phone {
+  margin-bottom:20rpx;
+}
+.house-phone span{
+  color: #787d82;
+}
+.house-phone span text {
+  margin-right: 10rpx;
+}
+.house-phone .phone-font {
+  margin-left: 10rpx;
+  color: #E9747D;
+}
+.house-row1-row2-left .house-address {
+    margin-bottom:20rpx;
+}
+.house-address span{
+    color: #787d82;
+}
+.house-address span text {
+    margin-right: 10rpx;
+}
+.house-address .address-font {
+    margin-left: 10rpx;
+    color: #E9747D;
+}
+.house-tag-item {
+  box-shadow:0.5px 0.5px 1rpx black;
+  border-radius: 22rpx;
+  padding: 5rpx;
+  background-color: #F5F5F5;
+  font-size: 25rpx;
+  color: #787d82;
+  margin-right: 20rpx;
+}
+.house-row1-row2-right {
+  display:flex;
+  flex:row wrap;
+  justify-content:space-between;
+  width:20%;
+}
+.house-row1-row3 {
+  display:flex;
+  flex:row wrap;
+  justify-content:space-between;
+  margin-bottom:20rpx;
+}
+.house-row1-row3 .house-row1-row3-left{
+  border-radius: 10rpx;
+  background-color: #E9747D;
+  text-align: center;
+  padding: 15rpx;
+  color: #532022;
+  width:40%;
+}
+.house-row1-row3 .house-row1-row3-right{
+  border-radius: 10rpx;
+  background-color: #E9747D;
+  text-align: center;
+  padding: 15rpx;
+  color: #532022;
+  width:50%;
+}
+
+
+
+
+
+.house-row2 {
+  background-color:white;
+  padding:16px;
+  margin-bottom:20rpx;
+}
+
+
+
+
+
+.house-row3 {
+    background-color:white;
+    padding:16px;
+    margin-bottom:20rpx;
+}
+.floor-plan-img {
+    display: inline;
+}
+
+
+
+
+.house-row4 {
+    background-color:white;
+    padding:16px;
+    margin-bottom:20rpx;
+}
+.house-row4 .house-row4-info {
+    margin-bottom:20rpx;
+}
+.house-row4-title {
+    font-weight:bold;
+    color:#646464;
+}
+.house-row4-content {
+    font-weight:bold;
+    color:#808080;
+    font-size: 22rpx;
+    /*word-wrap:break-word;*/
+    word-break:break-all;
+}
+
+
+
+
+.house-row5 {
+    background-color:white;
+    padding:16px;
+    margin-bottom:200rpx;
+}
+.house-row5 .house-row5-info {
+    display: flex;
+    flex-flow: row wrap;
+    padding-bottom: 20rpx;
+}
+.house-row5 .house-row5-info .house-row5-info-title{
+    color: #808080;
+    width: 30%;
+}
+.house-row5 .house-row5-info .house-row5-info-content{
+    word-break:break-all;
+}
+
+
+
+.house-footer {
+    width: 100%;
+    height: 100rpx;
+    background-color: white;
+    /*display: flex;*/
+    /*flex-flow: row wrap;*/
+    /*justify-content: space-between;*/
+
+    position: fixed;
+    bottom: 0rpx;
+}
+.house-footer .house-footer-flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.house-footer-flex-btn {
+    width: 50%;
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A52A2A;
+    color: white;
+}

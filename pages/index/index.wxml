@@ -1,0 +1,67 @@
+<view class="container">
+    <!-- 搜索 -->
+    <!--<view class="searchBox">-->
+    <!--<view class="searchBox-area">-->
+    <!--<text>阳新</text>-->
+    <!--<text class="iconfont icon-xiangxia font10"></text>-->
+    <!--</view>-->
+    <!--<view class="searchBox-input">-->
+    <!--<text class="iconfont icon-sousuo1"></text>-->
+    <!--<navigator open-type="navigate" url="">查询楼盘</navigator>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!-- 幻灯片 -->
+
+    <swiper class="swiper-img" autoplay="false" circular="{{true}}" style="height: {{Hei}}">
+        <swiper-item wx:for="{{slideshow}}" wx:key="id">
+            <image src="{{item.slideshow}}" mode="widthFix" bindload='imgH'/>
+        </swiper-item>
+    </swiper>
+    <!-- 图标导航 -->
+    <view class="icon-nav">
+        <block  wx:if="{{ !is_phone_auth }}">
+            <navigator hover-class="none" open-type="navigate" url="/pages/broker/broker">
+                <image class="rz" src="/images/icon/rz.png"/>
+                <text>经纪人认证</text>
+            </navigator>
+        </block>
+        <navigator hover-class="none" open-type="navigate" url="/pages/myClient/myClient">
+            <image class="kh" src="/images/icon/kh.png"/>
+            <text>我的客户</text>
+        </navigator>
+        <!--<navigator hover-class="none" open-type="navigate" url="">-->
+            <!--<image class="qb" src="/images/icon/qb.png"/>-->
+            <!--<text>我的钱包</text>-->
+        <!--</navigator>-->
+        <navigator hover-class="none" open-type="navigate" url="/pages/reave/reave">
+            <image class="tjr" src="/images/icon/tjr.png"/>
+            <text>推荐客户</text>
+        </navigator>
+    </view>
+
+    <!-- 热门楼盘 -->
+    <view>
+        <ui-count-down time="20" timetype="second" done-text="结束啦～～" format="{%s}秒"
+                       bindtimeup="bindtimeup"></ui-count-down>
+        <view style="padding: 10px;background-color: #F5F5F5;border-top: 1px solid #CCCCCC;">热门楼盘推荐</view>
+        <view class="recommend" wx:for="{{ houses }}" wx:key="house" wx:for-index="idx" wx:for-item="house">
+            <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id={{house.id}}">
+                <view>
+                    <image src="{{ house.img }}"/>
+                </view>
+                <view class="recommend-list-item">
+                    <view class="house-name">{{ house.name }}</view>
+                    <view class="recommend-list-item-phone"><text>{{ house.phone }}</text></view>
+                    <view class="recommend-list-item-price">
+                        <text>参考价格  {{ house.reference }}</text>
+                        元/㎡
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <!-- 回到顶部 -->
+    <view class="gototop">
+        <text class="iconfont font30 icon-fanhuidingbu" bindtap="scroTop"></text>
+    </view>
+</view>

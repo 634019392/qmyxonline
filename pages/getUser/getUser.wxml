@@ -1,0 +1,7 @@
+<view class="getUser">
+    <image class="btnImg" src="../../images/login/wechat.png"></image>
+
+    <button open-type="getUserInfo" type="primary" lang="zh_CN" bindgetuserinfo="getUserInfo">
+        微信用户一键登录
+    </button>
+</view>
