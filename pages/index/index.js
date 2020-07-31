@@ -49,9 +49,6 @@ Page({
             method: 'get',
             url: config.api_host + config.advs_img,
             success: res => {
-                console.log(config.api_host + config.advs_img);
-                console.log(123);
-                console.log(res);
                 if (res.data.status === 1000) {
                     that.setData({
                         slideshow: res.data.data

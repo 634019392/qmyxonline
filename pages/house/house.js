@@ -6,6 +6,7 @@ const app = getApp();
 Page({
 
     data: {
+        imgList: [],
         Hei: "",          //这是swiper要动态设置的高度属性
     },
 
@@ -94,5 +95,19 @@ Page({
         wx.navigateTo({
             url: '/pages/reave/reave'
         })
+    },
+    //预览图片，放大预览
+    preview(event) {
+        let currentUrl = event.currentTarget.dataset.src
+        this.data.house_floors.map(ret => {
+            this.setData({
+                imgList: [...this.data.imgList, ret.floor_plan]
+            })
+        })
+        wx.previewImage({
+            current: currentUrl, // 当前显示图片的http链接
+            urls: this.data.imgList // 需要预览的图片http链接列表
+        })
     }
+
 });

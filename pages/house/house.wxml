@@ -82,7 +82,7 @@
                 <scroll-view class="scroll-view_H" enable-flex="true" scroll-x="true" bindscroll="scroll" style="width: 100%">
 
                     <view class="scroll-view-item_H" wx:for="{{house_floors}}" wx:key="item.id">
-                        <image class="floor-plan-img" src="{{item.floor_plan}}"></image>
+                        <image class="floor-plan-img" bindtap="preview" src="{{item.floor_plan}}" data-src="{{item.floor_plan}}"></image>
                         <view class="house-floor-plan-text">
                             <view class="house-floor-plan-text-row1">
                                 {{item.floor_row1}}
