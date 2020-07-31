@@ -21,6 +21,8 @@ class Auth {
     // });
     authRequest(url, data, type = 'POST') {
         let accessToken = this.getToken();
+        let that = this;
+        this.showLoading('加载中');
         if (this.has_login()) {
             let request_url = config.api_host + url;
             let request_header = 'Bearer ' + accessToken;
@@ -31,8 +33,14 @@ class Auth {
                     url: request_url,
                     data: data,
                     header: {'Authorization': request_header},
-                    success: res => resolve(res.data),
-                    fail: ret => reject(ret)
+                    success: res => {
+                        that.hideLoading();
+                        resolve(res.data)
+                    },
+                    fail: ret => {
+                        that.hideLoading();
+                        reject(ret)
+                    }
                 });
             })
         }
@@ -83,7 +91,7 @@ class Auth {
                     that.loginFun(code).then((ret) => {
                         // console.log(ret);
                         // 认证的经纪人设置到cookie
-                        if (ret.data.is_phone_auth == 1)  {
+                        if (ret.data.is_phone_auth == 1) {
                             cache.forever('config_param', {is_phone_auth: ret.data.is_phone_auth});
                         }
 
@@ -131,6 +139,8 @@ class Auth {
 
     // 登录的请求函数
     loginFun(code) {
+        let that = this;
+        this.showLoading('加载中');
         return new Promise((resolve, reject) => {
             //发起网络请求
             wx.request({
@@ -138,8 +148,14 @@ class Auth {
                 method: 'POST',
                 url: config.api_host + config.login_url,
                 data: {'code': code},
-                success: ret => resolve(ret),
-                fail: ret => reject(ret)
+                success: ret => {
+                    that.hideLoading();
+                    resolve(ret)
+                },
+                fail: ret => {
+                    that.hideLoading();
+                    reject(ret)
+                }
             })
         })
     }
@@ -158,6 +174,37 @@ class Auth {
             return false;
         }
     }
+
+    // 显示加载框
+    showLoading(message) {
+        if (wx.showLoading) {
+            // 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理
+            wx.showLoading({
+                title: message,
+                mask: true
+            });
+        } else {
+            // 低版本采用Toast兼容处理并将时间设为20秒以免自动消失
+            wx.showToast({
+                title: message,
+                icon: 'loading',
+                mask: true,
+                duration: 20000
+            });
+        }
+    }
+
+    // 关闭加载框
+    hideLoading() {
+        if (wx.hideLoading) {
+            // 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理
+            wx.hideLoading();
+        } else {
+            wx.hideToast();
+        }
+    }
+
+
 }
 
 export default new Auth();

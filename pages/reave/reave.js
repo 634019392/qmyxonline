@@ -11,10 +11,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        items: [
-            {value: 'USA', name: '美国'},
-            {value: 'CHN', name: '中国', checked: 'true'},
-        ],
         truename: '',
         age: '',
         sex: '女',
