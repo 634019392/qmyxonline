@@ -23,6 +23,9 @@ Page({
             auth.authRequest(config.house_show,{house_id:house_id}, 'GET').then(res => {
                 if (res.status === 1000) {
                     let data = res.data;
+                    data.house_floors.map(ret => {
+                        that.data.imgList = [...that.data.imgList, ret.floor_plan]
+                    });
 
                     that.setData({
                         name: data.name,
@@ -99,11 +102,6 @@ Page({
     //预览图片，放大预览
     preview(event) {
         let currentUrl = event.currentTarget.dataset.src
-        this.data.house_floors.map(ret => {
-            this.setData({
-                imgList: [...this.data.imgList, ret.floor_plan]
-            })
-        })
         wx.previewImage({
             current: currentUrl, // 当前显示图片的http链接
             urls: this.data.imgList // 需要预览的图片http链接列表
