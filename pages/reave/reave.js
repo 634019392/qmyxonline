@@ -1,6 +1,7 @@
 import cache from '../../utils/Cache.js';
 import auth from '../../utils/Auth.js';
-
+//声明工具类对象
+let util= require('../../utils/Util.js')
 let config = require('../../config');
 const app = getApp();
 
@@ -70,7 +71,7 @@ Page({
         })
     },
     // 提交
-    reaveSubmit(e) {
+    reaveSubmit: util.throttle(function(e) {
         // checkbox取值
         let house_ids = '';
         if (this.data.houses.length > 0) {
@@ -109,5 +110,5 @@ Page({
                 })
             }
         })
-    }
+    }, 3000),
 });
