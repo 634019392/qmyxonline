@@ -39,7 +39,15 @@ class Auth {
                     },
                     fail: ret => {
                         that.hideLoading();
-                        reject(ret)
+                        reject(ret);
+                        if (ret.errMsg == 'request:fail timeout') {
+                            wx.showToast({
+                                title: '网络状态较差, 请刷新重试',
+                                icon: 'none',
+                                duration: 3000
+                            });
+                            return false;
+                        }
                     }
                 });
             })
@@ -102,6 +110,7 @@ class Auth {
                         cache.del('loginErrNum');
                         return true;
                     }).catch((error) => {
+                        console.log('Auth.js1的error在下方');
                         console.log(error);
                         if (error.errMsg === 'request:fail timeout') {
                             // 错4次终止且重置错误数字
@@ -118,6 +127,7 @@ class Auth {
                             cache.set('loginErrNum', parseInt(loginErrNum) + 1);
                             that.login();
                         } else {
+                            console.log('Auth.js2的error在下方');
                             console.log(error);
                             wx.showToast({
                                 title: '未知错误',

@@ -100,7 +100,7 @@ Page({
                             });
                             break;
                         default:
-                            that.setData({});
+
                     }
                 });
             }

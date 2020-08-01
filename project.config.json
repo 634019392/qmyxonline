@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -34,7 +34,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
-	"appid": "wx5f2a2a1d53134715",
+	"appid": "wxc5fe22aadc4a0c8e",
 	"projectname": "qmyxonline",
 	"debugOptions": {
 		"hidedInDevtools": []
