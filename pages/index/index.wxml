@@ -51,11 +51,16 @@
                 </view>
                 <view class="recommend-list-item">
                     <view class="house-name">{{ house.name }}</view>
-                    <view class="recommend-list-item-phone"><text>{{ house.phone }}</text></view>
+                    <view class="house-tag">
+                        <view class="house-tag-item">城市中心</view>
+                        <view class="house-tag-item">双湖环绕</view>
+                        <view class="house-tag-item">现代中式</view>
+                    </view>
                     <view class="recommend-list-item-price">
                         <text>参考价格  {{ house.reference }}</text>
                         元/㎡
                     </view>
+                    <view class="recommend-list-item-phone"><text>{{ house.phone }}</text></view>
                 </view>
             </navigator>
         </view>
