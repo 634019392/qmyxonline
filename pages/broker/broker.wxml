@@ -50,8 +50,8 @@
             <label>手机</label>
             <input name="phone" type="number" placeholder="手机号" data-name="phone" bindinput="bindKeyInput"
                    value="{{ phone }}"/>
-            <!--<button size="mini" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取-->
-            <!--</button>-->
+            <button size="mini" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取
+            </button>
         </view>
         <view>
             <label>验证</label>

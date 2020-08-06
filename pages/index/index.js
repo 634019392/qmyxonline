@@ -6,7 +6,8 @@ const app = getApp();
 Page({
 
     data: {
-        is_phone_auth: 0,
+        //tabbar
+        tabbar: {},
         houses: [],
         background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
         indicatorDots: true,
@@ -30,6 +31,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        app.editTabbar();// 自定义toBar
+
         let that = this;
         wx.request({
             timeout: 8000,

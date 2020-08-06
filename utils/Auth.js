@@ -10,9 +10,18 @@ class Auth {
         this.time = new Date().getTime();
     }
 
-    tt() {
-        let time = new Date().getTime();
-        console.log(time);
+    isBroker() {
+        let config_param = cache.get('config_param');
+        if (config_param) {
+            let is_phone_auth = config_param.is_phone_auth;
+            if (is_phone_auth == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     // 请求样板
@@ -38,6 +47,8 @@ class Auth {
                         resolve(res.data)
                     },
                     fail: ret => {
+                        console.log('Auth.js3的error在下方');
+                        console.log(ret);
                         that.hideLoading();
                         reject(ret);
                         if (ret.errMsg == 'request:fail timeout') {

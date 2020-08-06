@@ -173,7 +173,7 @@
 /* 回到顶部 */
 .gototop{
   position: fixed;
-  bottom: 50rpx;
+  bottom: 13%;
   left: 50rpx;
   color: #ccc;
 }

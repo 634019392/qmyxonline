@@ -1,6 +1,6 @@
 import auth from '../../utils/Auth.js';
 import cache from '../../utils/Cache.js';
-
+const app = getApp();
 // pages/home/home.js
 
 Page({
@@ -8,13 +8,23 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        //tabbar
+        tabbar: {},
+        is_phone_auth: 0,
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        app.editTabbar();// 自定义toBar
+        this.getUserInfo()
+        if (auth.isBroker()) {
+            this.setData({
+                is_phone_auth: 1
+            })
+        }
     },
 
     /**
@@ -28,18 +38,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        let config_param = cache.get('config_param');
-        if (config_param) {
-            let is_phone_auth = config_param.is_phone_auth;
-            if (is_phone_auth == 1) {
-                this.setData({
-                    'is_phone_auth': true
-                })
-            }
-        }
-        // else {
-        //     this.setBroker();
-        // }
+
     },
 
     /**

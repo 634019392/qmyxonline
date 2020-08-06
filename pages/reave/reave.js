@@ -24,6 +24,18 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        if (!auth.isBroker()) {
+            wx.showToast({
+                title: '请先进行经纪人认证',
+                icon: 'none',
+            });
+            setTimeout(ret => {
+                wx.switchTab({
+                    url: '/pages/index/index'
+                })
+            },2000);
+            return false;
+        }
         let that = this;
         auth.authRequest(config.boker_houses, '', 'GET').then(res => {
             if (res.status === 1000) {

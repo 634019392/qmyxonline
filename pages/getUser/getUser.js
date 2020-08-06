@@ -23,12 +23,14 @@ Page({
     getUserInfo(evt) {
         // console.log(app.globalData);
         if (evt.detail.errMsg != 'getUserInfo:ok') {
-            console.log(evt);
-            wx.showToast({
-                title: '请尝试重新授权',
-                icon: 'none',
-                duration: 1000
+            wx.switchTab({
+                url: '/pages/index/index'
             })
+            // wx.showToast({
+            //     title: '请尝试重新授权',
+            //     icon: 'none',
+            //     duration: 1000
+            // });
             return false;
         } else {
             let userData;
