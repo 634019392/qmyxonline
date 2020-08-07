@@ -7,6 +7,7 @@ Page({
 
     data: {
         imgList: [],
+        tag: [],
         Hei: "",          //这是swiper要动态设置的高度属性
     },
 
@@ -48,7 +49,8 @@ Page({
                         medical: data.mating.medical,
                         business: data.mating.business,
                         other: data.mating.other,
-                        house_floors: data.house_floors
+                        house_floors: data.house_floors,
+                        tag: data.tag
                     });
                 } else {
                     console.log('error');
@@ -74,7 +76,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        console.log(this.data);
     },
     scroll(e) {
         // console.log(e)
