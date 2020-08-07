@@ -85,3 +85,28 @@ form view input {
   width: 430rpx;
 }
 
+.hint {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  font-size: xx-small;
+  vertical-align: text-bottom;
+  padding-bottom: 0;
+  line-height: 1rpx;
+}
+.hint-head {
+  color: red;
+  font-weight: bold;
+  border: none;
+  vertical-align: text-bottom;
+  padding-bottom: 0;
+  line-height: 1rpx;
+}
+.hint-row {
+  border: none;
+  font-size: xx-small;
+  line-height: 0.9rem;
+  padding-top: 0;
+}
+
+
