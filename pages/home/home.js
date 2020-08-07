@@ -93,6 +93,19 @@ Page({
                 userInfo: userInfo
             })
         }
+    },
+
+    // 退出登录
+    logout() {
+        try {
+            wx.clearStorageSync()
+            wx.reLaunch({
+                url: '/pages/index/index'
+            })
+        } catch(e) {
+            console.log('logoutErr');
+            console.log(e);
+        }
     }
 
 

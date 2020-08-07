@@ -2,6 +2,7 @@
 import cache from "../../utils/Cache";
 import auth from "../../utils/Auth";
 import config from "../../config";
+
 const app = getApp();  // 引入app
 
 Page({
@@ -9,15 +10,14 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {
-
-    },
+    data: {},
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        // 登录
+        auth.has_login();
     },
 
     getUserInfo(evt) {
@@ -25,7 +25,7 @@ Page({
         if (evt.detail.errMsg != 'getUserInfo:ok') {
             wx.switchTab({
                 url: '/pages/index/index'
-            })
+            });
             // wx.showToast({
             //     title: '请尝试重新授权',
             //     icon: 'none',
@@ -60,6 +60,8 @@ Page({
                 console.log('getUserErr在下方');
                 console.log(err);
             })
+
+
         }
 
     },

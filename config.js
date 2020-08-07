@@ -1,11 +1,11 @@
 // let host = "https://yxfdc.w20.top/";
 // let api_host = "https://yxfdc.w20.top/api/v1/";
 
-// let host = "http://yxfdc.test/";
-// let api_host = "http://yxfdc.test/api/v1/";
+let host = "http://yxfdc.test/";
+let api_host = "http://yxfdc.test/api/v1/";
 
-let host = "http://d5a653b5e7c9.ngrok.io/";
-let api_host = "http://d5a653b5e7c9.ngrok.io/api/v1/";
+// let host = "http://d5a653b5e7c9.ngrok.io/";
+// let api_host = "http://d5a653b5e7c9.ngrok.io/api/v1/";
 let config = {
     host,
     api_host,

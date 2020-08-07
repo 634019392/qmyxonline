@@ -35,6 +35,10 @@
             认证经纪人
         </navigator>
     </view>
+    <view class="home-icon-item" bindtap="logout">
+        <view class="iconfont font30 icon-logout"></view>
+        退出登录
+    </view>
 </view>
 <view>
 <view class="recommend-title">推荐项目</view>
