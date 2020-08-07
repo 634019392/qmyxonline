@@ -65,7 +65,7 @@
   flex-wrap: wrap;
   color: #888;
   text-align: center;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
   height: 300rpx;
 }
 .home-icon-item{

@@ -106,6 +106,7 @@ Page({
      * 获取用户微信绑定手机号码
      */
     getPhoneNumber(e) {
+        console.log(e);
         var msg = e.detail.errMsg;
         var that = this;
         var sessionID = cache.get('session_id'),
