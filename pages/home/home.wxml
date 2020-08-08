@@ -43,7 +43,7 @@
 <view>
     <view class="recommend-title">推荐项目</view>
     <swiper autoplay="{{true}}" circular="{{true}}" interval="{{2000}}">
-        <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id=1">
+        <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id=1" style="border: none;">
             <swiper-item>
                 <view class="recommend-list">
                     <view>
