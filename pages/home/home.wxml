@@ -13,9 +13,9 @@
             <block wx:else>
                 <view class="home-info-label">未认证</view>
             </block>
-            <view class="home-info-area">
-                <navigator hover-class="none" open-type="navigate" url="/pages/personal/personal">编辑个人信息</navigator>
-            </view>
+            <!--<view class="home-info-area">-->
+                <!--<navigator hover-class="none" open-type="navigate" url="/pages/personal/personal">编辑个人信息</navigator>-->
+            <!--</view>-->
         </view>
     </view>
 
