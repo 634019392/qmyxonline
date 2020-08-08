@@ -50,7 +50,7 @@
                     <image src="{{ house.img }}"/>
                 </view>
                 <view class="recommend-list-item">
-                    <view class="house-name">{{ house.name }}</view>
+                    <view class="house-name">{{ house.name }} <text wx:if="{{ house.is_marketing == 1 }}" class="join-broker">全民经纪人</text></view>
                     <view class="house-tag">
                         <view class="house-tag-item" wx:for="{{ house.tag }}" wx:key="*this">{{item}}</view>
                     </view>

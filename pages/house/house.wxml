@@ -146,7 +146,11 @@
             <view class="house-row5-info-content">{{floor_space}}</view>
         </view>
         <view class="house-row5-info">
-            <view class="house-row5-info-title">产 权 ：</view>
+            <view class="house-row5-info-title">建筑面积：</view>
+            <view class="house-row5-info-content">{{covered_area}}</view>
+        </view>
+        <view class="house-row5-info">
+            <view class="house-row5-info-title">产 权(年)：</view>
             <view class="house-row5-info-content">{{property_right}}</view>
         </view>
         <view class="house-row5-info">

@@ -232,3 +232,8 @@
   color: #787d82;
   margin-right: 1rpx;
 }
+.join-broker {
+  font-weight: normal;
+  font-size: xx-small;
+  color: #787d82;
+}

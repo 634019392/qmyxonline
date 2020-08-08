@@ -186,13 +186,12 @@
     margin-bottom:20rpx;
 }
 .house-row4-title {
-    font-weight:bold;
-    color:#646464;
+    color:#808080;
 }
 .house-row4-content {
     font-weight:bold;
-    color:#808080;
-    font-size: 22rpx;
+    color:#646464;
+    font-size: 30rpx;
     /*word-wrap:break-word;*/
     word-break:break-all;
 }
@@ -212,10 +211,13 @@
 }
 .house-row5 .house-row5-info .house-row5-info-title{
     color: #808080;
-    width: 30%;
+    width: 25%;
 }
 .house-row5 .house-row5-info .house-row5-info-content{
     word-break:break-all;
+    font-weight:bold;
+    color:#646464;
+    font-size: 30rpx;
 }
 
 

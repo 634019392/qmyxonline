@@ -39,6 +39,7 @@ Page({
                         type: data.mating.type,
                         decor: data.mating.decor,
                         floor_space: data.mating.floor_space,
+                        covered_area: data.mating.covered_area,
                         property_right: data.mating.property_right,
                         property_name: data.mating.property_name,
                         greening: data.mating.greening,
