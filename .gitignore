@@ -4,3 +4,4 @@
 /storage/*.key
 .env
 .idea/
+project.config.json

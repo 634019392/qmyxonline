@@ -20,176 +20,180 @@
     </view>
 
     <tabbar tabbar="{{tabbar}}"></tabbar>
-</view>
 
-<view class="home-icon">
-    <view class="home-icon-item" wx:if="{{ is_phone_auth }}">
-        <navigator hover-class="none" open-type="navigate" url="/pages/myClient/myClient">
-            <view class="iconfont font30 icon-team"></view>
-            我的客户
-        </navigator>
+    <view class="home-icon">
+        <view class="home-icon-item" wx:if="{{ is_phone_auth }}">
+            <navigator hover-class="none" open-type="navigate" url="/pages/myClient/myClient">
+                <view class="iconfont font30 icon-team"></view>
+                我的客户
+            </navigator>
+        </view>
+        <view class="home-icon-item" wx:if="{{ !is_phone_auth }}">
+            <navigator hover-class="none" open-type="navigate" url="/pages/broker/broker">
+                <view class="iconfont font30 icon-verified"></view>
+                认证经纪人
+            </navigator>
+        </view>
+        <view class="home-icon-item" bindtap="logout">
+            <view class="iconfont font30 icon-logout"></view>
+            退出登录
+        </view>
     </view>
-    <view class="home-icon-item" wx:if="{{ !is_phone_auth }}">
-        <navigator hover-class="none" open-type="navigate" url="/pages/broker/broker">
-            <view class="iconfont font30 icon-verified"></view>
-            认证经纪人
-        </navigator>
+    <view>
+        <official-account></official-account>
     </view>
-    <view class="home-icon-item" bindtap="logout">
-        <view class="iconfont font30 icon-logout"></view>
-        退出登录
-    </view>
-</view>
-<view>
-    <view class="recommend-title">推荐项目</view>
-    <swiper autoplay="{{true}}" circular="{{true}}" interval="{{2000}}">
-        <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id=1" style="border: none;">
-            <swiper-item>
-                <view class="recommend-list">
-                    <view>
-                        <image src="http://w20.top/srys.jpg"/>
-                    </view>
-                    <view class="recommend-list-item">
-                        <view class="recommend-list-item-title">世荣御墅</view>
-                        <view class="recommend-list-item-spec">vip购房热线:0714-7588777</view>
-                        <view class="recommend-list-item-tag">
-                            <text class="tag1">城市中心</text>
-                            <text class="tag2">双湖环绕</text>
-                            <text class="tag3">现代中式</text>
+    <view>
+        <view class="recommend-title">推荐项目</view>
+        <swiper autoplay="{{true}}" circular="{{true}}" interval="{{2000}}">
+            <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id=1"
+                       style="border: none;">
+                <swiper-item>
+                    <view class="recommend-list">
+                        <view>
+                            <image src="http://w20.top/srys.jpg"/>
                         </view>
-                        <view class="recommend-list-item-price">
-                            <text>参考价格3900</text>
-                            元/㎡
+                        <view class="recommend-list-item">
+                            <view class="recommend-list-item-title">世荣御墅</view>
+                            <view class="recommend-list-item-spec">vip购房热线:0714-7588777</view>
+                            <view class="recommend-list-item-tag">
+                                <text class="tag1">城市中心</text>
+                                <text class="tag2">双湖环绕</text>
+                                <text class="tag3">现代中式</text>
+                            </view>
+                            <view class="recommend-list-item-price">
+                                <text>参考价格3900</text>
+                                元/㎡
+                            </view>
                         </view>
                     </view>
-                </view>
-            </swiper-item>
-        </navigator>
-    </swiper>
-</view>
+                </swiper-item>
+            </navigator>
+        </swiper>
+    </view>
 
-<!--<view>-->
-<!--<view class="recommend-title">推荐房源</view>-->
-<!--<swiper autoplay="{{true}}" circular="{{true}}" interval="{{2000}}">-->
-<!--<swiper-item>-->
-<!--<view class="recommend-list">-->
-<!--<view>-->
-<!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
-<!--</view>-->
-<!--<view class="recommend-list-item">-->
-<!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
-<!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
-<!--<view class="recommend-list-item-tag">-->
-<!--<text class="tag1">押一付三</text>-->
-<!--<text class="tag2">免押金</text>-->
-<!--<text class="tag3">精装</text>-->
-<!--</view>-->
-<!--<view class="recommend-list-item-price">-->
-<!--<text>1500</text>-->
-<!--元/月-->
-<!--</view>-->
-<!--</view>-->
-<!--</view>-->
-<!--</swiper-item>-->
-<!--<swiper-item>-->
-<!--<view class="recommend-list">-->
-<!--<view>-->
-<!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
-<!--</view>-->
-<!--<view class="recommend-list-item">-->
-<!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
-<!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
-<!--<view class="recommend-list-item-tag">-->
-<!--<text class="tag1">押一付三</text>-->
-<!--<text class="tag2">免押金</text>-->
-<!--<text class="tag3">精装</text>-->
-<!--</view>-->
-<!--<view class="recommend-list-item-price">-->
-<!--<text>2500</text>-->
-<!--元/月-->
-<!--</view>-->
-<!--</view>-->
-<!--</view>-->
-<!--</swiper-item>-->
-<!--<swiper-item>-->
-<!--<view class="recommend-list">-->
-<!--<view>-->
-<!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
-<!--</view>-->
-<!--<view class="recommend-list-item">-->
-<!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
-<!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
-<!--<view class="recommend-list-item-tag">-->
-<!--<text class="tag1">押一付三</text>-->
-<!--<text class="tag2">免押金</text>-->
-<!--<text class="tag3">精装</text>-->
-<!--</view>-->
-<!--<view class="recommend-list-item-price">-->
-<!--<text>3500</text>-->
-<!--元/月-->
-<!--</view>-->
-<!--</view>-->
-<!--</view>-->
-<!--</swiper-item>-->
-<!--<swiper-item>-->
-<!--<view class="recommend-list">-->
-<!--<view>-->
-<!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
-<!--</view>-->
-<!--<view class="recommend-list-item">-->
-<!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
-<!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
-<!--<view class="recommend-list-item-tag">-->
-<!--<text class="tag1">押一付三</text>-->
-<!--<text class="tag2">免押金</text>-->
-<!--<text class="tag3">精装</text>-->
-<!--</view>-->
-<!--<view class="recommend-list-item-price">-->
-<!--<text>4500</text>-->
-<!--元/月-->
-<!--</view>-->
-<!--</view>-->
-<!--</view>-->
-<!--</swiper-item>-->
-<!--<swiper-item>-->
-<!--<view class="recommend-list">-->
-<!--<view>-->
-<!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
-<!--</view>-->
-<!--<view class="recommend-list-item">-->
-<!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
-<!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
-<!--<view class="recommend-list-item-tag">-->
-<!--<text class="tag1">押一付三</text>-->
-<!--<text class="tag2">免押金</text>-->
-<!--<text class="tag3">精装</text>-->
-<!--</view>-->
-<!--<view class="recommend-list-item-price">-->
-<!--<text>5500</text>-->
-<!--元/月-->
-<!--</view>-->
-<!--</view>-->
-<!--</view>-->
-<!--</swiper-item>-->
-<!--<swiper-item>-->
-<!--<view class="recommend-list">-->
-<!--<view>-->
-<!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
-<!--</view>-->
-<!--<view class="recommend-list-item">-->
-<!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
-<!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
-<!--<view class="recommend-list-item-tag">-->
-<!--<text class="tag1">押一付三</text>-->
-<!--<text class="tag2">免押金</text>-->
-<!--<text class="tag3">精装</text>-->
-<!--</view>-->
-<!--<view class="recommend-list-item-price">-->
-<!--<text>6500</text>-->
-<!--元/月-->
-<!--</view>-->
-<!--</view>-->
-<!--</view>-->
-<!--</swiper-item>-->
-<!--</swiper>-->
-<!--</view>-->
+    <!--<view>-->
+    <!--<view class="recommend-title">推荐房源</view>-->
+    <!--<swiper autoplay="{{true}}" circular="{{true}}" interval="{{2000}}">-->
+    <!--<swiper-item>-->
+    <!--<view class="recommend-list">-->
+    <!--<view>-->
+    <!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item">-->
+    <!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
+    <!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
+    <!--<view class="recommend-list-item-tag">-->
+    <!--<text class="tag1">押一付三</text>-->
+    <!--<text class="tag2">免押金</text>-->
+    <!--<text class="tag3">精装</text>-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item-price">-->
+    <!--<text>1500</text>-->
+    <!--元/月-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</swiper-item>-->
+    <!--<swiper-item>-->
+    <!--<view class="recommend-list">-->
+    <!--<view>-->
+    <!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item">-->
+    <!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
+    <!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
+    <!--<view class="recommend-list-item-tag">-->
+    <!--<text class="tag1">押一付三</text>-->
+    <!--<text class="tag2">免押金</text>-->
+    <!--<text class="tag3">精装</text>-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item-price">-->
+    <!--<text>2500</text>-->
+    <!--元/月-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</swiper-item>-->
+    <!--<swiper-item>-->
+    <!--<view class="recommend-list">-->
+    <!--<view>-->
+    <!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item">-->
+    <!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
+    <!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
+    <!--<view class="recommend-list-item-tag">-->
+    <!--<text class="tag1">押一付三</text>-->
+    <!--<text class="tag2">免押金</text>-->
+    <!--<text class="tag3">精装</text>-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item-price">-->
+    <!--<text>3500</text>-->
+    <!--元/月-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</swiper-item>-->
+    <!--<swiper-item>-->
+    <!--<view class="recommend-list">-->
+    <!--<view>-->
+    <!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item">-->
+    <!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
+    <!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
+    <!--<view class="recommend-list-item-tag">-->
+    <!--<text class="tag1">押一付三</text>-->
+    <!--<text class="tag2">免押金</text>-->
+    <!--<text class="tag3">精装</text>-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item-price">-->
+    <!--<text>4500</text>-->
+    <!--元/月-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</swiper-item>-->
+    <!--<swiper-item>-->
+    <!--<view class="recommend-list">-->
+    <!--<view>-->
+    <!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item">-->
+    <!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
+    <!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
+    <!--<view class="recommend-list-item-tag">-->
+    <!--<text class="tag1">押一付三</text>-->
+    <!--<text class="tag2">免押金</text>-->
+    <!--<text class="tag3">精装</text>-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item-price">-->
+    <!--<text>5500</text>-->
+    <!--元/月-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</swiper-item>-->
+    <!--<swiper-item>-->
+    <!--<view class="recommend-list">-->
+    <!--<view>-->
+    <!--<image src="https://fang.1314000.cn/zfw/widget-it-1.png" />-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item">-->
+    <!--<view class="recommend-list-item-title">合租 - 双裕小区3居室-南卧</view>-->
+    <!--<view class="recommend-list-item-spec">120平米 | 3室1厅</view>-->
+    <!--<view class="recommend-list-item-tag">-->
+    <!--<text class="tag1">押一付三</text>-->
+    <!--<text class="tag2">免押金</text>-->
+    <!--<text class="tag3">精装</text>-->
+    <!--</view>-->
+    <!--<view class="recommend-list-item-price">-->
+    <!--<text>6500</text>-->
+    <!--元/月-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</swiper-item>-->
+    <!--</swiper>-->
+    <!--</view>-->
+</view>
