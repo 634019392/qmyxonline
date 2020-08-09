@@ -130,4 +130,6 @@
   font-size: 12px;
   border-radius: 5px;
 }
-
+.container{
+  margin-bottom: 10%;
+}

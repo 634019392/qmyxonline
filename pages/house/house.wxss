@@ -1,5 +1,5 @@
 .container{
-  margin-bottom: 200rpx;
+  padding-bottom: 10%;
 }
 
 .scroll-view_H{
