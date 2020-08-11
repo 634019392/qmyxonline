@@ -68,7 +68,8 @@
     /*border: 1px solid #eee;*/
     box-shadow: 1px 1px 5px #a4a4a4;
     padding: 2vh;
-    border-radius: 10rpx
+    border-radius: 10rpx;
+    position: relative;
 }
 .name-row1 {
     display: flex;
@@ -81,4 +82,9 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+}
+.protect-time {
+    position: absolute;
+    right: 0rpx;
+    top: 30%;
 }

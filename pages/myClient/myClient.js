@@ -66,12 +66,14 @@ Page({
         auth.authRequest(config.my_client, {openid}).then(res => {
             if (res.status === 1000) {
                 res.data.map((res) => {
+                    // console.log(res);
                     let buyer_id = res.buyer_id;
                     let truename = res.buyer_arr.truename;
                     let phone = res.buyer_arr.phone;
                     let house = res.house_arr.name;
+                    let remain_day = res.remain_day;
                     let info = {
-                        buyer_id,truename,phone,house
+                        buyer_id,truename,phone,house,remain_day
                     };
                     switch(res.status) {
                         case '1':

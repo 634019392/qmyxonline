@@ -25,12 +25,12 @@
                 <hr class="line-style" />
             </view>
         </view>
-
         <!--内容布局-->
         <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}' style="height: {{height}}rpx" >
             <swiper-item class='swiper'>
                 <view wx:for="{{firstList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
                     <view class='name'>
+                        <van-tag class="protect-time" mark type="danger" size="medium">剩余 {{item.remain_day}} 天</van-tag>
                         <view class="name-row1">{{item.truename}}</view>
                         <view class="name-row2">
                             <view>{{item.house}}</view>
@@ -42,6 +42,7 @@
             <swiper-item class='swiper'>
                 <view wx:for="{{secondList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
                     <view class='name'>
+                        <van-tag class="protect-time" mark type="warning" size="medium">剩余 {{item.remain_day}} 天</van-tag>
                         <view class="name-row1">{{item.truename}}</view>
                         <view class="name-row2">
                             <view>{{item.house}}</view>
@@ -75,6 +76,7 @@
             <swiper-item class='swiper'>
                 <view wx:for="{{fifthList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
                     <view class='name'>
+                        <van-tag class="protect-time" mark color="#a4a4a4" size="medium">失 效</van-tag>
                         <view class="name-row1">{{item.truename}}</view>
                         <view class="name-row2">
                             <view>{{item.house}}</view>
