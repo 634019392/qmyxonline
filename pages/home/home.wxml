@@ -34,6 +34,12 @@
                 认证经纪人
             </navigator>
         </view>
+        <view class="home-icon-item">
+            <navigator hover-class="none" open-type="navigate" url="/pages/step/step">
+                <view class="iconfont font30 icon-eye"></view>
+                查看流程
+            </navigator>
+        </view>
         <view class="home-icon-item" bindtap="logout">
             <view class="iconfont font30 icon-logout"></view>
             退出登录

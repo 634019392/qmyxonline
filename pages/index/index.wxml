@@ -15,32 +15,34 @@
     <swiper class="swiper-img" autoplay="false" circular="{{true}}" style="height: {{Hei}}">
         <swiper-item wx:for="{{slideshow}}" wx:key="id">
             <!--<van-image fit="scale-down" lazy-load use-loading-slot use-error-slot src="{{item.slideshow}}">-->
-                <!--&lt;!&ndash;<van-loading slot="loading" type="spinner" size="20" vertical />&ndash;&gt;-->
-                <!--<text slot="error">加载失败</text>-->
+            <!--&lt;!&ndash;<van-loading slot="loading" type="spinner" size="20" vertical />&ndash;&gt;-->
+            <!--<text slot="error">加载失败</text>-->
             <!--</van-image>-->
-            <image src="{{item.slideshow}}" mode="widthFix" bindload='imgH'/>
+            <navigator hover-class="none" open-type="navigate" url="{{item.skip_page}}">
+                <image src="{{item.slideshow}}" mode="widthFix" bindload='imgH'/>
+            </navigator>
         </swiper-item>
     </swiper>
     <!-- 图标导航 -->
     <!--<view class="icon-nav">-->
-        <!--<block  wx:if="{{ !is_phone_auth }}">-->
-            <!--<navigator hover-class="none" open-type="navigate" url="/pages/broker/broker">-->
-                <!--<image class="rz" src="/images/icon/rz.png"/>-->
-                <!--<text>经纪人认证</text>-->
-            <!--</navigator>-->
-        <!--</block>-->
-        <!--<navigator hover-class="none" open-type="navigate" url="/pages/myClient/myClient">-->
-            <!--<image class="kh" src="/images/icon/kh.png"/>-->
-            <!--<text>我的客户</text>-->
-        <!--</navigator>-->
-        <!--&lt;!&ndash;<navigator hover-class="none" open-type="navigate" url="">&ndash;&gt;-->
-            <!--&lt;!&ndash;<image class="qb" src="/images/icon/qb.png"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<text>我的钱包</text>&ndash;&gt;-->
-        <!--&lt;!&ndash;</navigator>&ndash;&gt;-->
-        <!--<navigator hover-class="none" open-type="navigate" url="/pages/reave/reave">-->
-            <!--<image class="tjr" src="/images/icon/tjr.png"/>-->
-            <!--<text>推荐客户</text>-->
-        <!--</navigator>-->
+    <!--<block  wx:if="{{ !is_phone_auth }}">-->
+    <!--<navigator hover-class="none" open-type="navigate" url="/pages/broker/broker">-->
+    <!--<image class="rz" src="/images/icon/rz.png"/>-->
+    <!--<text>经纪人认证</text>-->
+    <!--</navigator>-->
+    <!--</block>-->
+    <!--<navigator hover-class="none" open-type="navigate" url="/pages/myClient/myClient">-->
+    <!--<image class="kh" src="/images/icon/kh.png"/>-->
+    <!--<text>我的客户</text>-->
+    <!--</navigator>-->
+    <!--&lt;!&ndash;<navigator hover-class="none" open-type="navigate" url="">&ndash;&gt;-->
+    <!--&lt;!&ndash;<image class="qb" src="/images/icon/qb.png"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<text>我的钱包</text>&ndash;&gt;-->
+    <!--&lt;!&ndash;</navigator>&ndash;&gt;-->
+    <!--<navigator hover-class="none" open-type="navigate" url="/pages/reave/reave">-->
+    <!--<image class="tjr" src="/images/icon/tjr.png"/>-->
+    <!--<text>推荐客户</text>-->
+    <!--</navigator>-->
     <!--</view>-->
 
     <!-- 热门楼盘 -->
@@ -54,15 +56,19 @@
                     <image src="{{ house.img }}"/>
                 </view>
                 <view class="recommend-list-item">
-                    <view class="house-name">{{ house.name }} <text wx:if="{{ house.is_marketing == 1 }}" class="join-broker">全民经纪人</text></view>
+                    <view class="house-name">{{ house.name }}
+                        <text wx:if="{{ house.is_marketing == 1 }}" class="join-broker">全民经纪人</text>
+                    </view>
                     <view class="house-tag">
                         <view class="house-tag-item" wx:for="{{ house.tag }}" wx:key="*this">{{item}}</view>
                     </view>
                     <view class="recommend-list-item-price">
-                        <text>参考价格  {{ house.reference }}</text>
+                        <text>参考价格 {{ house.reference }}</text>
                         元/㎡
                     </view>
-                    <view class="recommend-list-item-phone"><text>{{ house.phone }}</text></view>
+                    <view class="recommend-list-item-phone">
+                        <text>{{ house.phone }}</text>
+                    </view>
                 </view>
             </navigator>
         </view>

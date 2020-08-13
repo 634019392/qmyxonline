@@ -31,7 +31,7 @@ Page({
             });
             setTimeout(ret => {
                 wx.switchTab({
-                    url: '/pages/index/index'
+                    url: '/pages/home/home'
                 })
             },2000);
             return false;

@@ -1,0 +1,7 @@
+<van-skeleton title avatar row="3" loading="{{ loading }}">
+    <!-- 文字较短时，通过设置 scrollable 属性开启滚动播放 -->
+    <van-notice-bar scrollable text="阳房通推荐详细流程图" />
+    <view class="container" style="background-color: white">
+        <image lazy-load src="/images/rzstep.png" mode="widthFix" bindload='imgH' style="height: {{Hei}}"/>
+    </view>
+</van-skeleton>

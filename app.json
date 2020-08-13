@@ -6,7 +6,8 @@
     "pages/broker/broker",
     "pages/reave/reave",
     "pages/myClient/myClient",
-    "pages/house/house"
+    "pages/house/house",
+    "pages/step/step"
   ],
   "permission": {
     "scope.userLocation": {
