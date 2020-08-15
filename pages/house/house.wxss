@@ -2,6 +2,13 @@
   padding-bottom: 10%;
 }
 
+.scroll-view-item_fH{
+    display: inline-block;
+    width: 200rpx;
+    height: 200rpx;
+    padding:20rpx;
+}
+
 .scroll-view_H{
   white-space: nowrap;
 }

@@ -6,6 +6,7 @@ const app = getApp();
 Page({
 
     data: {
+        houseOutlines: [], // 项目概要图片
         imgList: [],
         tag: [],
         Hei: "",          //这是swiper要动态设置的高度属性
@@ -26,6 +27,9 @@ Page({
                     let data = res.data;
                     data.house_floors.map(ret => {
                         that.data.imgList = [...that.data.imgList, ret.floor_plan]
+                    });
+                    data.house_outlines.map(ret => {
+                        that.data.houseOutlines = [...that.data.houseOutlines, ret.outline_pic]
                     });
 
                     that.setData({
@@ -51,7 +55,8 @@ Page({
                         business: data.mating.business,
                         other: data.mating.other,
                         house_floors: data.house_floors,
-                        tag: data.tag
+                        tag: data.tag,
+                        house_outlines: data.house_outlines
                     });
                 } else {
                     console.log('error');
@@ -104,10 +109,23 @@ Page({
     },
     //预览图片，放大预览
     preview(event) {
-        let currentUrl = event.currentTarget.dataset.src
+        // console.log(event);
+        let currentUrl = event.currentTarget.dataset.src;
+        let tag = event.currentTarget.dataset.tag;
+        let urls = '';
+        if (tag == 'house_outlines') {
+            urls = this.data.houseOutlines
+        }
+        if (tag == 'floor_plan') {
+            urls = this.data.imgList
+        }
+        // console.log(urls);
         wx.previewImage({
             current: currentUrl, // 当前显示图片的http链接
-            urls: this.data.imgList // 需要预览的图片http链接列表
+            urls: urls, // 需要预览的图片http链接列表
+            // complete: (ret) => {
+            //     console.log(ret);
+            // }
         })
     }
 

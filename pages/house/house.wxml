@@ -1,59 +1,67 @@
 <!-- 容器 -->
 <view class="container">
-    <swiper class="swiper-img" autoplay="false" circular="{{true}}" indicator-dots="{{true}}" style="height: {{Hei}}">
-        <swiper-item>
-            <image src="{{img}}" mode="widthFix" bindload='imgH'/>
-        </swiper-item>
-    </swiper>
+    <van-skeleton title row="8" loading="{{false}}">
+        <swiper class="swiper-img" autoplay="false" circular="{{true}}" indicator-dots="{{true}}"
+                style="height: {{Hei}}">
+            <swiper-item>
+                <image src="{{img}}" mode="widthFix" bindload='imgH'/>
+            </swiper-item>
+        </swiper>
+    </van-skeleton>
 
     <!--简单信息-->
-    <view class="house-row1">
-        <view class="house-row1-row1">
-            <view class="house-title">{{name}}</view>
-            <!--<view class="house-online-buy">网上认购</view>-->
-        </view>
-        <view class="house-row1-row2">
-            <view class="house-row1-row2-left">
-                <view class="house-tag">
-                    <view class="house-tag-item" wx:for="{{tag}}" wx:key="*this">{{item}}</view>
+    <van-skeleton title row="4" loading="{{false}}">
+        <view class="house-row1">
+            <view class="house-row1-row1">
+                <view class="house-title">{{name}}</view>
+                <!--<view class="house-online-buy">网上认购</view>-->
+            </view>
+            <view class="house-row1-row2">
+                <view class="house-row1-row2-left">
+                    <view class="house-tag">
+                        <view class="house-tag-item" wx:for="{{tag}}" wx:key="*this">{{item}}</view>
+                    </view>
+                    <view class="house-reference">
+                        <span><text class="iconfont icon-accountbook"></text>参考价格</span>
+                        <text class="reference-font">高层 {{reference}}元/㎡</text>
+                    </view>
+                    <view class="house-phone">
+                        <span><text class="iconfont icon-phone"></text>项目热线</span>
+                        <text class="phone-font">{{phone}}</text>
+                    </view>
+                    <view class="house-address">
+                        <span><text class="iconfont icon-car"></text>项目地址</span>
+                        <text class="address-font">{{address}}</text>
+                    </view>
                 </view>
-                <view class="house-reference">
-                    <span><text class="iconfont icon-accountbook"></text>参考价格</span>
-                    <text class="reference-font">高层 {{reference}}元/㎡</text>
-                </view>
-                <view class="house-phone">
-                    <span><text class="iconfont icon-phone"></text>项目热线</span>
-                    <text class="phone-font">{{phone}}</text>
-                </view>
-                <view class="house-address">
-                    <span><text class="iconfont icon-car"></text>项目地址</span>
-                    <text class="address-font">{{address}}</text>
+                <view class="house-row1-row2-right">
+                    <!--<view>-->
+                    <!--<view>优惠海报</view>-->
+                    <!--</view>-->
+                    <!--<view>楼盘公众号</view>-->
                 </view>
             </view>
-            <view class="house-row1-row2-right">
-                <!--<view>-->
-                <!--<view>优惠海报</view>-->
-                <!--</view>-->
-                <!--<view>楼盘公众号</view>-->
-            </view>
-        </view>
-        <!--<view class="house-row1-row3">-->
+            <!--<view class="house-row1-row3">-->
             <!--<view class="house-row1-row3-left">-->
-                <!--<text class="iconfont icon-rencai"></text>-->
-                <!--<span>联系置业顾问</span></view>-->
+            <!--<text class="iconfont icon-rencai"></text>-->
+            <!--<span>联系置业顾问</span></view>-->
             <!--<view class="house-row1-row3-right">-->
-                <!--<text class="iconfont icon-calendar-check-fill"></text>-->
-                <!--<span>查看房源价格 网上认购</span></view>-->
-        <!--</view>-->
-        <!--<view class="house-row1-row4">-->
-        <!--<view>平</view>-->
-        <!--<view>行</view>-->
-        <!--<view>翻</view>-->
-        <!--<view>页</view>-->
-        <!--<view>图</view>-->
-        <!--<view>片</view>-->
-        <!--</view>-->
-    </view>
+            <!--<text class="iconfont icon-calendar-check-fill"></text>-->
+            <!--<span>查看房源价格 网上认购</span></view>-->
+            <!--</view>-->
+            <view class="house-row1-row4">
+                <scroll-view class="scroll-view_H" enable-flex="true" scroll-x="true" bindscroll="scroll"
+                             style="width: 100%">
+
+                    <view class="scroll-view-item_fH" wx:for="{{house_outlines}}" wx:key="*this">
+                        <image class="floor-plan-img" bindtap="preview" src="{{item.outline_pic}}"
+                               data-src="{{item.outline_pic}}" data-tag="house_outlines"></image>
+                    </view>
+
+                </scroll-view>
+            </view>
+        </view>
+    </van-skeleton>
 
     <!--<view class="house-row2">-->
     <!--<view>-->
@@ -73,31 +81,35 @@
     <!--</view>-->
     <!--</view>-->
 
-    <view class="house-row3">
-        <view class="house-title">户型图</view>
-        <view class="house-row3-content">
-            <view class="page-section-spacing">
-                <scroll-view class="scroll-view_H" enable-flex="true" scroll-x="true" bindscroll="scroll" style="width: 100%">
+    <van-skeleton title avatar row="5" loading="{{false}}">
+        <view class="house-row3">
+            <view class="house-title">户型图</view>
+            <view class="house-row3-content">
+                <view class="page-section-spacing">
+                    <scroll-view class="scroll-view_H" enable-flex="true" scroll-x="true" bindscroll="scroll"
+                                 style="width: 100%">
 
-                    <view class="scroll-view-item_H" wx:for="{{house_floors}}" wx:key="*this">
-                        <image class="floor-plan-img" bindtap="preview" src="{{item.floor_plan}}" data-src="{{item.floor_plan}}"></image>
-                        <view class="house-floor-plan-text">
-                            <view class="house-floor-plan-text-row1">
-                                {{item.floor_row1}}
-                            </view>
-                            <view class="house-floor-plan-text-row2">
-                                {{item.floor_row2}}
-                            </view>
-                            <view class="house-floor-plan-text-row3">
-                                {{item.floor_row3}}
+                        <view class="scroll-view-item_H" wx:for="{{house_floors}}" wx:key="*this">
+                            <image class="floor-plan-img" bindtap="preview" src="{{item.floor_plan}}"
+                                   data-src="{{item.floor_plan}}" data-tag="floor_plan"></image>
+                            <view class="house-floor-plan-text">
+                                <view class="house-floor-plan-text-row1">
+                                    {{item.floor_row1}}
+                                </view>
+                                <view class="house-floor-plan-text-row2">
+                                    {{item.floor_row2}}
+                                </view>
+                                <view class="house-floor-plan-text-row3">
+                                    {{item.floor_row3}}
+                                </view>
                             </view>
                         </view>
-                    </view>
 
-                </scroll-view>
+                    </scroll-view>
+                </view>
             </view>
         </view>
-    </view>
+    </van-skeleton>
 
     <view class="house-row4">
         <view class="house-title">周边配套</view>

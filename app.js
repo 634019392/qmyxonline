@@ -9,7 +9,7 @@ App({
     // 生命周期 它是小程序中第1个执行方法
     onLaunch() {
         //隐藏系统tabbar
-        wx.hideTabBar();
+        // wx.hideTabBar();
         //获取设备信息
         this.getSystemInfo();
         // 登录
@@ -27,7 +27,7 @@ App({
      */
     onShow: function () {
         //隐藏系统tabbar
-        wx.hideTabBar();
+        // wx.hideTabBar();
     },
     getSystemInfo: function () {
         let t = this;
