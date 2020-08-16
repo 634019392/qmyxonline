@@ -26,14 +26,16 @@ Page({
     onLoad: function (options) {
         if (!auth.isBroker()) {
             wx.showToast({
-                title: '请先进行经纪人认证',
+                title: '请先经纪人认证,2秒后跳转 我的',
                 icon: 'none',
+                duration: 5000,
+                mask: true
             });
             setTimeout(ret => {
                 wx.switchTab({
                     url: '/pages/home/home'
                 })
-            },2000);
+            },3000);
             return false;
         }
         let that = this;

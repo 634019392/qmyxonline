@@ -74,7 +74,7 @@
         </view>
     </view>
     <!-- 回到顶部 -->
-    <view class="gototop">
+    <view class="gototop" hidden='{{!floorstatus}}'>
         <text class="iconfont font30 icon-fanhuidingbu" bindtap="scroTop"></text>
     </view>
 

@@ -5,7 +5,7 @@
     </view>
     <form bindsubmit="reaveSubmit">
         <view>
-            <label>购房人真实姓名</label>
+            <label>购房人姓名</label>
             <input name="truename" data-name="truename" bindinput="bindKeyInput" placeholder="真实姓名"
                    value="{{ truename }}"/>
         </view>
@@ -54,12 +54,12 @@
         <!--<view>-->
         <!--houses-->
         <!--</view>-->
-        <view>
-            <label>身份证后6位</label>
-            <input name="card_alert_six" type="idcard" data-name="card_alert_six" bindinput="bindKeyInput"
-                   placeholder="身份证号"
-                   value="{{ card_alert_six }}"/>
-        </view>
+        <!--<view>-->
+            <!--<label>身份证后6位</label>-->
+            <!--<input name="card_alert_six" type="idcard" data-name="card_alert_six" bindinput="bindKeyInput"-->
+                   <!--placeholder="身份证号"-->
+                   <!--value="{{ card_alert_six }}"/>-->
+        <!--</view>-->
         <view>
             <label>请选择推荐楼盘：</label>
         </view>

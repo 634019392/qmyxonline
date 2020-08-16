@@ -16,6 +16,7 @@ Page({
         interval: 2000,
         duration: 500,
         Hei: "",          //这是swiper要动态设置的高度属性
+        floorstatus: false, // 回到顶部，默认不显示
     },
 
     /**
@@ -110,16 +111,37 @@ Page({
             arrows
         })
     },
+    // 回到顶部1：获取滚动条当前位置
+    onPageScroll: function (e) {
+        // console.log(e)
+        if (e.scrollTop > 300) {
+            this.setData({
+                floorstatus: true
+            });
+        } else {
+            this.setData({
+                floorstatus: false
+            });
+        }
+    },
+    // 回到顶部2：点击到到顶部
     scroTop: () => {
-        wx.pageScrollTo({
-            scrollTop: 0,
-            duration: 300
-        })
+        if (wx.pageScrollTo) {
+            wx.pageScrollTo({
+                scrollTop: 0,
+                duration: 300
+            })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+            })
+        }
     },
     onShareAppMessage() {
         return {
-            title: 'swiper',
-            path: 'page/component/pages/swiper/swiper'
+            title: '世荣御墅，一荐万金，你推荐，我买单！',
+            path: '/pages/index/index'
         }
     },
     changeIndicatorDots() {
