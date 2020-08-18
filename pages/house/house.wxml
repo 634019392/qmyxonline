@@ -189,7 +189,7 @@
     </view>
 
     <!--底部栏-->
-    <view class="house-footer">
+    <view wx:if="{{ is_marketing }}" class="house-footer">
         <view class="house-footer-flex">
             <view></view>
             <view class="house-footer-flex-btn" bind:tap="reaveBuyer">

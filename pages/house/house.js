@@ -11,6 +11,7 @@ Page({
         tag: [],
         Hei: "",          //这是swiper要动态设置的高度属性
         floorstatus: false, // 回到顶部，默认不显示
+        is_marketing: false, // 默认未开启全民营销
     },
 
     /**
@@ -32,6 +33,13 @@ Page({
                     data.house_outlines.map(ret => {
                         that.data.houseOutlines = [...that.data.houseOutlines, ret.outline_pic]
                     });
+
+                    // 属于全民营销楼盘的给与推荐按钮
+                    if (data.is_marketing == '1') {
+                        that.setData({
+                            is_marketing: true
+                        })
+                    }
 
                     that.setData({
                         name: data.name,
