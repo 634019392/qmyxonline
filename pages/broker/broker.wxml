@@ -5,7 +5,7 @@
     </view>
     <form bindsubmit="brokerSubmit">
         <view>
-            <label>真实姓名</label>
+            <label><text style="color:red;">*</text>真实姓名</label>
             <input name="truename" data-name="truename" bindinput="bindKeyInput" placeholder="真实姓名"
                    value="{{ truename }}"/>
         </view>
@@ -42,25 +42,25 @@
             </radio-group>
         </view>
         <view>
-            <label>年龄</label>
+            <label><text style="color:red;">*</text>年龄</label>
             <input name="age" type="number" data-name="age" bindinput="bindKeyInput" placeholder="年龄"
                    value="{{ age }}"/>
         </view>
         <view>
-            <label>手机</label>
+            <label><text style="color:red;">*</text>手机</label>
             <input name="phone" type="number" placeholder="手机号" data-name="phone" bindinput="bindKeyInput"
                    value="{{ phone }}"/>
             <!--<button size="mini" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号-->
             <!--</button>-->
         </view>
-        <view>
-            <label>验证</label>
-            <input class="phone_node" name="phone_node" type="number" data-name="phone_node" bindinput="bindKeyInput"
+        <view class="code-info">
+            <label style="width: 100rpx;"><text style="color:red;">*</text>验证</label>
+            <input style="width: 40%;" class="phone_node" name="phone_node" type="number" data-name="phone_node" bindinput="bindKeyInput"
                    placeholder="短信验证码" value="{{ phone_node }}"/>
-            <button bindtap="sendCode" size="mini" type="primary">发送</button>
+            <button disabled="{{smsFlag}}" bindtap="sendCode" size="mini" type="primary">{{sendTime}}</button>
         </view>
         <view>
-            <label>身份证号</label>
+            <label><text style="color:red;">*</text>身份证号</label>
             <input name="id_card" type="idcard" data-name="id_card" bindinput="bindKeyInput" placeholder="身份证号"
                    value="{{ idcard }}"/>
         </view>

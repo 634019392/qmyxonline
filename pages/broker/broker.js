@@ -19,6 +19,10 @@ Page({
         phone_node: '',
         id_card: '',
         id_card_img: [],
+        //设置初始的状态、包含字体、颜色、还有等待事件 > <
+        sendTime: '获取验证码',
+        sendColor: '#363636',
+        snsMsgWait: 60
     },
 
     /**
@@ -166,6 +170,29 @@ Page({
             });
             return false;
         }
+
+        // 60秒后重新获取验证码
+        // 1.发送按钮添加 disabled="{{smsFlag}}"
+        // 2.data中加入data:{sendTime: '获取验证码',sendColor: '#363636',snsMsgWait: 60}
+        // 3.发送验证码加入var inter方法
+        var inter = setInterval(function() {
+            this.setData({
+                smsFlag: true,
+                sendColor: '#cccccc',
+                sendTime: this.data.snsMsgWait + 's后重发',
+                snsMsgWait: this.data.snsMsgWait - 1
+            });
+            if (this.data.snsMsgWait < 0) {
+                clearInterval(inter)
+                this.setData({
+                    sendColor: '#363636',
+                    sendTime: '获取验证码',
+                    snsMsgWait: 60,
+                    smsFlag: false
+                });
+            }
+        }.bind(this), 1000);
+
         auth.authRequest(config.bokers_send_code, info).then(res => {
             if (res.status == 1000) {
                 wx.showToast({

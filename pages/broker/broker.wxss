@@ -78,3 +78,9 @@ form view input {
   top: 0;
 }
 
+.code-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
