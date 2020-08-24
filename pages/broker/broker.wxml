@@ -46,18 +46,18 @@
             <input name="age" type="number" data-name="age" bindinput="bindKeyInput" placeholder="年龄"
                    value="{{ age }}"/>
         </view>
-        <view>
+        <view class="code-info">
             <label><text style="color:red;">*</text>手机</label>
             <input name="phone" type="number" placeholder="手机号" data-name="phone" bindinput="bindKeyInput"
                    value="{{ phone }}"/>
+            <button disabled="{{smsFlag}}" bindtap="sendCode" size="mini" type="primary">{{sendTime}}</button>
             <!--<button size="mini" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号-->
             <!--</button>-->
         </view>
-        <view class="code-info">
-            <label style="width: 100rpx;"><text style="color:red;">*</text>验证</label>
-            <input style="width: 40%;" class="phone_node" name="phone_node" type="number" data-name="phone_node" bindinput="bindKeyInput"
+        <view>
+            <label><text style="color:red;">*</text>验证</label>
+            <input class="phone_node" name="phone_node" type="number" data-name="phone_node" bindinput="bindKeyInput"
                    placeholder="短信验证码" value="{{ phone_node }}"/>
-            <button disabled="{{smsFlag}}" bindtap="sendCode" size="mini" type="primary">{{sendTime}}</button>
         </view>
         <view>
             <label><text style="color:red;">*</text>身份证号</label>

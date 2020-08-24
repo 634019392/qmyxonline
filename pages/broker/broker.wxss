@@ -83,4 +83,10 @@ form view input {
   align-items: center;
   justify-content: center;
 }
+.code-info label {
+  width: 100rpx;
+}
+.code-info input{
+  width: 40%;
+}
 
