@@ -50,7 +50,7 @@
         <ui-count-down time="20" timetype="second" done-text="结束啦～～" format="{%s}秒"
                        bindtimeup="bindtimeup"></ui-count-down>
         <view style="padding: 10px;background-color: #F5F5F5;border-top: 1px solid #CCCCCC;">热门楼盘推荐</view>
-        <view class="recommend" wx:for="{{ houses }}" wx:key="house" wx:for-index="idx" wx:for-item="house">
+        <view class="recommend {{house.id == 1 ? 'div-show' : ''}}" wx:for="{{ houses }}" wx:key="house" wx:for-index="idx" wx:for-item="house">
             <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id={{house.id}}">
                 <view>
                     <image src="{{ house.img }}"/>

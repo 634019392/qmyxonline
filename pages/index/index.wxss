@@ -238,3 +238,8 @@
   font-size: xx-small;
   color: #787d82;
 }
+
+.div-show {
+  border:3px dashed #F00;
+  border-radius: 22rpx;
+}
