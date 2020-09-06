@@ -11,30 +11,12 @@ Page({
     data: {
         height: '',
         currentIndex: 0,
+        "allList": [],
         "firstList": [],
         "secondList": [],
         "thirdList": [],
         "fourthList": [],
         "fifthList": [],
-    },
-
-    //swiper切换时会调用
-    pagechange: function (e) {
-        if ("touch" === e.detail.source) {
-            let currentPageIndex = this.data.currentIndex
-            currentPageIndex = (currentPageIndex + 1) % 3
-            this.setData({
-                currentIndex: currentPageIndex
-            })
-        }
-    },
-    //用户点击tab时调用
-    titleClick: function (e) {
-        let currentPageIndex =
-            this.setData({
-                //拿到当前索引并动态改变
-                currentIndex: e.currentTarget.dataset.idx
-            })
     },
 
     /**
@@ -72,9 +54,33 @@ Page({
                     let phone = res.buyer_arr.phone;
                     let house = res.house_arr.name;
                     let remain_day = res.remain_day;
+                    let status = res.status;
+                    let status_class = '';
+                    let recommender_id = res.id;
+                    switch (status) {
+                        case '1':
+                            status_class = 'danger';
+                            break;
+                        case '2':
+                            status_class = 'warning';
+                            break;
+                        case '3':
+                            status_class = 'primary';
+                            break;
+                        case '4':
+                            status_class = 'success';
+                            break;
+                        case '5':
+                            break;
+                    }
                     let info = {
-                        buyer_id,truename,phone,house,remain_day
+                        buyer_id,truename,phone,house,remain_day,status,status_class,recommender_id
                     };
+                    if (res.status <= 4) {
+                        that.setData({
+                            'allList': [...that.data.allList,info]
+                        });
+                    }
                     switch(res.status) {
                         case '1':
                             that.setData({
@@ -151,12 +157,12 @@ Page({
 
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    goClientRecord:function (e) {
+        // console.log(e);
+        let item = JSON.stringify(e.currentTarget.dataset.item);
+        wx.navigateTo({
+            url: '/pages/clientRecord/clientRecord?item=' + item
+        });
     }
-
 
 });

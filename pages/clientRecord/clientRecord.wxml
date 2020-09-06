@@ -1,0 +1,57 @@
+<view class="container">
+    <view class="info-head">
+        <view class="info-line-space-s">
+            <van-row>
+                <!--姓名-->
+                <van-col span="5">{{myClient.truename}}</van-col>
+                <!--联系方式-->
+                <van-col span="8">{{myClient.phone}}</van-col>
+            </van-row>
+        </view>
+        <view class="info-line-space-m">
+            <van-row>
+                <van-col span="16">
+                    <text class="info-font-s info-font-color-gray">推荐项目：{{myClient.house}}</text>
+                </van-col>
+            </van-row>
+        </view>
+        <view class="info-line-space-s">
+            <van-row>
+                <van-col span="24">
+                    <block wx:if="{{myClient.status == 1 || item.status == 2}}">
+                        <text class="info-font-s info-font-color-gray">剩余有效期：{{myClient.remain_day}}天</text>
+                    </block>
+                    <block wx:if="{{myClient.status == 3}}">
+                        <text class="info-font-s info-font-color-gray">温馨提示：用户已认购，请耐心等待用户至营销中心签约，签约时间一般为认购之日起七日内</text>
+                    </block>
+                    <block wx:if="{{myClient.status == 4}}">
+                        <text class="info-font-s info-font-color-gray">温馨提示：用户已签约，工作人员会在7个工作日内与你联系，请保持电话通畅或联系电话0714-7588777</text>
+                    </block>
+                    <block wx:if="{{myClient.status == 5}}">
+                        <text class="info-font-s info-font-color-gray">温馨提示：该用户已失效，请重新推荐</text>
+                    </block>
+                </van-col>
+            </van-row>
+        </view>
+    </view>
+
+    <view class="info-content">
+        <view>
+            <van-row>
+                <van-col span="5">
+                    <text class="info-font-s">客户记录</text>
+                </van-col>
+            </van-row>
+        </view>
+        <van-divider/>
+        <view>
+            <van-steps
+                    steps="{{ steps }}"
+                    active="{{ active }}"
+                    direction="vertical"
+                    active-color="#ee0a24"
+            />
+        </view>
+    </view>
+</view>
+

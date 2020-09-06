@@ -1,0 +1,30 @@
+.info-head {
+    background-color: white;
+    padding: 3%;
+}
+.info-font-s {
+    font-size: small;
+}
+.info-font-xs {
+    font-size: x-small;
+}
+.info-font-xxs {
+    font-size: xx-small;
+}
+.info-font-color-gray {
+    color: #848590;
+}
+.info-line-space-s {
+    margin-top: 1%;
+}
+.info-line-space-m {
+    margin-top: 3%;
+}
+.info-line-space-l {
+    margin-top: 5%;
+}
+.info-content {
+    background-color: white;
+    padding: 3%;
+    margin-top: 2%;
+}

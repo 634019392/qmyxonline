@@ -134,6 +134,12 @@ Page({
             url: '/pages/reave/reave'
         })
     },
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+
+    },
     //预览图片，放大预览
     preview(event) {
         // console.log(event);
