@@ -3,7 +3,7 @@
         <view class="info-line-space-s">
             <van-row>
                 <!--姓名-->
-                <van-col span="5">{{myClient.truename}}</van-col>
+                <van-col span="8">{{myClient.truename}}</van-col>
                 <!--联系方式-->
                 <van-col span="8">{{myClient.phone}}</van-col>
             </van-row>
@@ -18,14 +18,14 @@
         <view class="info-line-space-s">
             <van-row>
                 <van-col span="24">
-                    <block wx:if="{{myClient.status == 1 || item.status == 2}}">
+                    <block wx:if="{{myClient.status == 1 || myClient.status == 2}}">
                         <text class="info-font-s info-font-color-gray">剩余有效期：{{myClient.remain_day}}天</text>
                     </block>
                     <block wx:if="{{myClient.status == 3}}">
-                        <text class="info-font-s info-font-color-gray">温馨提示：用户已认购，请耐心等待用户至营销中心签约，签约时间一般为认购之日起七日内</text>
+                        <!--<text class="info-font-s info-font-color-gray">温馨提示：用户已认购，如有疑问请联系0714-7588777</text>-->
                     </block>
                     <block wx:if="{{myClient.status == 4}}">
-                        <text class="info-font-s info-font-color-gray">温馨提示：用户已签约，工作人员会在7个工作日内与你联系，请保持电话通畅或联系电话0714-7588777</text>
+                        <!--<text class="info-font-s info-font-color-gray">温馨提示：用户已签约，请保持电话通畅或联系电话0714-7588777</text>-->
                     </block>
                     <block wx:if="{{myClient.status == 5}}">
                         <text class="info-font-s info-font-color-gray">温馨提示：该用户已失效，请重新推荐</text>
