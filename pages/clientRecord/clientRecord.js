@@ -72,7 +72,6 @@ Page({
     client_records(recommender_id) {
         let that = this;
         auth.authRequest(config.client_records,{recommender_id:recommender_id}, 'POST').then(res => {
-            console.log(res);
             if (res.status === 1000) {
                 that.setData(res.data);
             } else {
