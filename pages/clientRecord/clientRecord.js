@@ -7,7 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        active: 0,
+        active: -1,
         steps: [
             {
                 text: '暂无跟进方式',
@@ -72,6 +72,7 @@ Page({
     client_records(recommender_id) {
         let that = this;
         auth.authRequest(config.client_records,{recommender_id:recommender_id}, 'POST').then(res => {
+            console.log(res);
             if (res.status === 1000) {
                 that.setData(res.data);
             } else {
