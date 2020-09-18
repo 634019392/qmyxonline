@@ -1,9 +1,10 @@
 import cache from '../../utils/Cache.js';
 import auth from '../../utils/Auth.js';
 //声明工具类对象
-let util= require('../../utils/Util.js');
+let util= require('../../utils/Util.js')
 let config = require('../../config');
 const app = getApp();
+
 // pages/landlord/landlord.js
 Page({
 
@@ -11,28 +12,24 @@ Page({
      * 页面的初始数据
      */
     data: {
-        columns: [
-            // { text: '楼盘名称',house_ids: 0 },
-            // { text: '楼盘名称1',house_ids: 1 }
+        option1: [
+            { text: '全部商品', value: 0 },
+            { text: '新款商品', value: 1 },
+            { text: '活动商品', value: 2 },
         ],
-        show: false,
-        checked: true,
+        value1: 0,
         truename: '',
         age: '',
         sex: '女',
         phone: '',
         card_alert_six: '',
-        house: {}
+        houses: [],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // 从楼盘详情页跳转过来设置选择楼盘
-        let house = {house_ids: options.house_ids, name: options.name};
-        this.setData({house});
-
         if (!auth.isBroker()) {
             wx.showToast({
                 title: '请先经纪人认证,2秒后跳转 我的',
@@ -50,32 +47,70 @@ Page({
         let that = this;
         auth.authRequest(config.boker_houses, '', 'GET').then(res => {
             if (res.status === 1000) {
-                res.data.map((item, index) => {
-                    let text = item.name+item.fee_text;
-                    let house_ids = item.id;
-                    let info = {text, house_ids};
-                    that.setData({
-                        'columns': [...that.data.columns, info]
-                    });
-                });
+                that.setData({
+                    houses: res.data
+                })
             }
+        })
+    },
+    checkboxChange(e) {
+        const houses = this.data.houses;
+        const values = e.detail.value;
+        for (let i = 0, lenI = houses.length; i < lenI; ++i) {
+            houses[i].checked = false;
+
+            for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+                if (houses[i].id == values[j]) {
+                    houses[i].checked = true;
+                    break
+                }
+            }
+        }
+
+        this.setData({
+            houses: houses
+        })
+    },
+    // radio修改的情况
+    radioChange(e) {
+        let key = e.target.dataset.name;
+        let val = e.detail.value;
+        this.setData({
+            [key]: val
+        })
+    },
+    /*
+    * input框中需要添加属性 data-name="为data中的key" bindinput="bindKeyInput"
+    * 事实更新input框中数值
+    */
+    bindKeyInput(e) {
+        let key = e.target.dataset.name;
+        let val = e.detail.value;
+        this.setData({
+            [key]: val
         })
     },
     // 提交
     reaveSubmit: util.throttle(function(e) {
-        let postData = this.data;
+        console.log(e);return false;
         // checkbox取值
         let house_ids = '';
+        if (this.data.houses.length > 0) {
+            this.data.houses.map((item, index) => {
+                if (item.checked == true) {
+                    house_ids += item.id + ','
+                }
+            })
+        }
         let data = {
             openid: cache.get('openid'),
-            phone: postData.phone,
-            card_alert_six: postData.card_alert_six,
-            sex: postData.sex,
-            age: postData.age,
-            truename: postData.truename,
-            house_ids: postData.house.house_ids,
+            phone: e.detail.value.phone,
+            card_alert_six: e.detail.value.card_alert_six,
+            sex: e.detail.value.sex,
+            age: e.detail.value.age,
+            truename: e.detail.value.truename,
+            house_ids: house_ids,
         };
-
         auth.authRequest(config.reave, data).then(res => {
             if (res.status === 1000) {
                 wx.showToast({
@@ -96,36 +131,5 @@ Page({
                 })
             }
         })
-    }, 1500),
-    // 设置性别
-    onChangeSex({ detail }) {
-        // 需要手动对 checked 状态进行更新
-        this.setData({ checked: detail });
-        if (detail) {
-            this.setData({ sex: '女' });
-        } else {
-            this.setData({ sex: '男' });
-        }
-    },
-    // 打开popup弹出层
-    showPopup() {
-        this.setData({ show: true });
-    },
-    // 关闭popup弹出层
-    onClose() {
-        this.setData({ show: false });
-    },
-    // popup弹出层中的确定按钮
-    onConfirm(event) {
-        let res = event.detail.value;
-        let house_name = res.text;
-        let house_ids = res.house_ids;
-        let house_info = {name: house_name, house_ids};
-        this.setData({house: house_info});
-        this.onClose();
-    },
-    // popup弹出层中的取消按钮
-    onCancel() {
-        this.onClose();
-    },
+    }, 3000),
 });

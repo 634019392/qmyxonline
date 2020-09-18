@@ -109,9 +109,4 @@ form view input {
   padding-top: 0;
 }
 
-.info-center {
-  display: flex;
-  justify-content: center;
-}
-
 

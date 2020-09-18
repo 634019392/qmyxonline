@@ -87,7 +87,7 @@
   height: 1000rpx;
 }
 .recommend {
-  margin-top: 3px;
+  margin-top: 6rpx;
   background: #fff;
   color: #474747;
 }
@@ -106,6 +106,7 @@
   border-top: 1px solid #cccccc;
   display: flex;
   padding: 20rpx;
+  padding-top: 35rpx;
 }
 .recommend-list image {
   width: 350rpx;

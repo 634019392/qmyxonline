@@ -42,31 +42,38 @@ Page({
                     }
 
                     that.setData({
+                        house_id,
                         name: data.name,
                         address: data.address,
                         img: data.img,
                         phone: data.phone,
                         reference: data.reference,
-                        open_time: data.mating.open_time,
-                        feature: data.mating.feature,
-                        type: data.mating.type,
-                        decor: data.mating.decor,
-                        floor_space: data.mating.floor_space,
-                        covered_area: data.mating.covered_area,
-                        property_right: data.mating.property_right,
-                        property_name: data.mating.property_name,
-                        greening: data.mating.greening,
-                        plot: data.mating.plot,
-                        delivery_time: data.mating.delivery_time,
-                        traffic: data.mating.traffic,
-                        education: data.mating.education,
-                        medical: data.mating.medical,
-                        business: data.mating.business,
-                        other: data.mating.other,
                         house_floors: data.house_floors,
                         tag: data.tag,
-                        house_outlines: data.house_outlines
+                        house_outlines: data.house_outlines,
+                        fee_text: data.fee_text,
                     });
+
+                    if (data.mating) {
+                        that.setData({
+                            open_time: data.mating.open_time,
+                            feature: data.mating.feature,
+                            type: data.mating.type,
+                            decor: data.mating.decor,
+                            floor_space: data.mating.floor_space,
+                            covered_area: data.mating.covered_area,
+                            property_right: data.mating.property_right,
+                            property_name: data.mating.property_name,
+                            greening: data.mating.greening,
+                            plot: data.mating.plot,
+                            delivery_time: data.mating.delivery_time,
+                            traffic: data.mating.traffic,
+                            education: data.mating.education,
+                            medical: data.mating.medical,
+                            business: data.mating.business,
+                            other: data.mating.other,
+                        });
+                    }
                 } else {
                     console.log('error');
                 }
@@ -131,7 +138,7 @@ Page({
     },
     reaveBuyer: function (ret) {
         wx.navigateTo({
-            url: '/pages/reave/reave'
+            url: '/pages/reave/reave?house_ids='+this.data.house_id+'&&name='+this.data.name+this.data.fee_text
         })
     },
     /**

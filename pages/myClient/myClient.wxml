@@ -1,10 +1,13 @@
 <view class='ticket-container'>
-    <van-tabs sticky animated swipeable>
+    <van-tabs color="#FFFFFF" sticky animated swipeable tab-active-class="tab-active">
         <van-tab title="全部">
             <view wx:for="{{allList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
                 <view class='name' bindtap="goClientRecord" data-item="{{item}}">
-                    <van-tag class="protect-time" mark type="{{item.status_class}}"
+                    <van-tag class="protect-time" mark type="{{item.status_class}}" color="{{item.color}}"
                              size="medium">
+                        <block wx:if="{{item.status == 0}}">
+                            审核中...
+                        </block>
                         <block wx:if="{{item.status == 1 || item.status == 2}}">
                             剩余 {{item.remain_day}} 天
                         </block>
@@ -15,6 +18,19 @@
                             已签约
                         </block>
                     </van-tag>
+                    <view class="name-row1">序号: {{index + 1}}</view>
+                    <view class="name-row1">{{item.truename}}</view>
+                    <view class="name-row2">
+                        <view>{{item.house}}</view>
+                        <view>{{item.phone}}</view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="审核中">
+            <view wx:for="{{zerothList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
+                <view class='name' bindtap="goClientRecord" data-item="{{item}}">
+                    <van-tag class="protect-time" mark color="#7232dd" size="medium">审核中...</van-tag>
                     <view class="name-row1">序号: {{index + 1}}</view>
                     <view class="name-row1">{{item.truename}}</view>
                     <view class="name-row2">
@@ -74,7 +90,7 @@
                 </view>
             </view>
         </van-tab>
-        <van-tab title="过期">
+        <van-tab title="失效">
             <view wx:for="{{fifthList}}" wx:key="item.buyer_id" wx:for-item="item" class='record-item'>
                 <view class='name' bindtap="goClientRecord" data-item="{{item}}">
                     <van-tag class="protect-time" mark color="#a4a4a4" size="medium">失 效</van-tag>

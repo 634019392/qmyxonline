@@ -3,111 +3,126 @@
         <text class="iconfont icon-approve"></text>
         <text>注：为避免重复推荐，以下是购房人信息填写！</text>
     </view>
-    <form bindsubmit="reaveSubmit">
-        <view>
-            <label>购房人姓名</label>
-            <input name="truename" data-name="truename" bindinput="bindKeyInput" placeholder="真实姓名"
-                   value="{{ truename }}"/>
-        </view>
-        <view>
-            <label style="padding-right: 10%">性别</label>
-            <radio-group name="sex" data-name="sex" bindchange="radioChange">
-
-                <block wx:if="{{ sex }} == 男">
-                    <label class="radio">
-                        <radio value="男" checked/>
-                        男
-                    </label>
-                </block>
-                <block wx:else>
-                    <label class="radio">
-                        <radio value="男"/>
-                        男
-                    </label>
-                </block>
-
-                <block wx:if="{{ sex }} == 女">
-                    <label class="radio">
-                        <radio value="女" checked/>
-                        女
-                    </label>
-                </block>
-                <block wx:else>
-                    <label class="radio">
-                        <radio value="女"/>
-                        女
-                    </label>
-                </block>
-
-            </radio-group>
-        </view>
-        <view>
-            <label>年龄</label>
-            <input name="age" type="number" data-name="age" bindinput="bindKeyInput" placeholder="年龄"
-                   value="{{ age }}"/>
-        </view>
-        <view>
-            <label>手机</label>
-            <input name="phone" type="number" placeholder="手机号" data-name="phone" bindinput="bindKeyInput"
-                   value="{{ phone }}"/>
-        </view>
-        <!--<view>-->
-        <!--houses-->
-        <!--</view>-->
-        <!--<view>-->
-            <!--<label>身份证后6位</label>-->
-            <!--<input name="card_alert_six" type="idcard" data-name="card_alert_six" bindinput="bindKeyInput"-->
-                   <!--placeholder="身份证号"-->
-                   <!--value="{{ card_alert_six }}"/>-->
-        <!--</view>-->
-        <view>
-            <label>请选择推荐楼盘：</label>
-        </view>
-        <!--<checkbox-group name="ids[]" bindchange="checkboxChange" style="display: block;margin-bottom: 200rpx">-->
-            <!--<view style="padding-left: 155rpx" wx:for="{{ items }}" wx:key="{{item.value}}">-->
-                <!--<label class="checkbox">-->
-                    <!--<checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}-->
-                <!--</label>-->
-            <!--</view>-->
-        <!--</checkbox-group>-->
-        <checkbox-group bindchange="checkboxChange" style="display: block;">
-            <view style="padding-left: 155rpx" wx:for="{{ houses }}" wx:key="{{item.id}}">
-                <label class="checkbox">
-                    <checkbox value="{{item.id}}" checked="{{item.checked}}" />{{item.name}}
-                </label>
+    <van-cell-group>
+        <van-field
+                label="购房人姓名："
+                model:value="{{ truename }}"
+                placeholder="请输入客户真实姓名"
+                border="{{ false }}"
+        />
+    </van-cell-group>
+    <van-cell-group>
+        <van-cell>
+            <view slot="title" style="color: #646566;">
+                性别：
             </view>
-        </checkbox-group>
-
-        <view class="hint">
-            <view class="hint-head">【温馨提示】</view>
-            <view class="hint-row">
-                <text>
-                    *您或您的亲朋好友须在首次到访楼盘现场前30分钟，已在“阳房通”平台上自荐或被推荐，才可享受佣金及优惠政策。\r\n
-                    *推荐客户保护期为30天，30天后默认为过期用户，需要重新推荐。
-                </text>
+            <view class="info-center" style="padding-right: 40%;">
+                <text decode="{{true}}">男&nbsp;&nbsp;</text>
+                <van-switch
+                        size="40rpx"
+                        checked="{{ checked }}"
+                        bind:change="onChangeSex"
+                        active-color="#FFE4E1"
+                        inactive-color="#87CEFA"
+                />
+                <text decode="{{true}}">&nbsp;&nbsp;女</text>
             </view>
-        </view>
-        <!--*请准确填写被推荐客户手机号及身份证号后六位，如填写错误，认购后将视为无效推荐。\r\n-->
+        </van-cell>
+    </van-cell-group>
+    <van-cell-group>
+        <van-field
+                label="年龄 ："
+                model:value="{{ age }}"
+                placeholder="请输入客户年龄"
+                border="{{ false }}"
+                type="number"
+        />
+    </van-cell-group>
+    <van-cell-group>
+        <van-field
+                label="手机号 ："
+                model:value="{{ phone }}"
+                placeholder="请输入客户手机号"
+                border="{{ false }}"
+                type="number"
+        />
+    </van-cell-group>
+    <van-cell-group>
+        <van-cell>
+            <view slot="title">
+                <view class="van-cell-text" style="color: #646566;">意向楼盘：</view>
+            </view>
+            <view class="info-center">
+                <text wx:if="{{!house.name}}" bind:tap="showPopup" style="color: #C8C9CC">请选择意向楼盘</text>
+                <text wx:else bind:tap="showPopup" style="color: #646566;">{{house.name}}</text>
+            </view>
+            <van-popup
+                    show="{{ show }}"
+                    round
+                    position="bottom"
+                    bind:close="onClose"
+            >
+                <van-picker
+                        show-toolbar
+                        columns="{{ columns }}"
+                        default-index="{{ 0 }}"
+                        bind:cancel="onCancel"
+                        bind:confirm="onConfirm"
+                />
+            </van-popup>
+        </van-cell>
+    </van-cell-group>
+    <van-cell-group border="{{false}}">
+        <van-cell border="{{false}}">
+            <view style="text-align:left;margin-top: 10%">
+                <view class="hint">
+                    <view class="hint-head">【温馨提示】</view>
+                    <view class="hint-row">
+                        <text>
+                            *您或您的亲朋好友须在首次到访楼盘现场前30分钟，已在“阳房通”平台上自荐或被推荐，才可享受佣金及优惠政策。\r\n
+                            *推荐客户保护期为30天，30天后默认为过期用户，需要重新推荐。\r\n
+                            *此活动的解释权归该项目所有。
+                        </text>
+                    </view>
+                </view>
+            </view>
+        </van-cell>
+    </van-cell-group>
+    <!--<van-row>-->
+    <!--<van-col offset="12" span="12">-->
+    <!--<view class="hint">-->
+    <!--<view class="hint-head">【温馨提示】</view>-->
+    <!--<view class="hint-row">-->
+    <!--<text>-->
+    <!--*您或您的亲朋好友须在首次到访楼盘现场前30分钟，已在“阳房通”平台上自荐或被推荐，才可享受佣金及优惠政策。\r\n-->
+    <!--*推荐客户保护期为30天，30天后默认为过期用户，需要重新推荐。\r\n-->
+    <!--*此活动的解释权归该项目所有-->
+    <!--</text>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--&lt;!&ndash;&lt;!&ndash;*请准确填写被推荐客户手机号及身份证号后六位，如填写错误，认购后将视为无效推荐。\r\n&ndash;&gt;&ndash;&gt;-->
+    <!--</van-col>-->
+    <!--</van-row>-->
 
-        <!--<view>-->
-        <!--<label>上传身份证照片</label>-->
-        <!--</view>-->
-        <!--<view class="uppic" bindtap="upFile">-->
-        <!--<text class="iconfont icon-jiahao"></text>-->
-        <!--</view>-->
-        <!--<view class="tip-msg">-->
-        <!--<text>请按顺序传入①正面②反面③手持身份证照片</text>-->
-        <!--<text>(照片仅用于身份认证)</text>-->
-        <!--</view>-->
-        <!--<view>-->
-        <!--<block wx:for="{{ id_card_img }}" wx:key="">-->
-        <!--<image src="{{ item }}" mode="aspectFit" style="margin-bottom: 50%"></image>-->
-        <!--</block>-->
-        <!--</view>-->
-        <view style="margin-bottom: 300rpx;border: none;"></view>
-        <view class="sendbtn">
-            提交信息
-            <button type="primary" form-type="submit">提交信息</button>
-        </view>
-    </form>
+    <!--<van-row>-->
+    <!--<van-col offset="12" span="12">-->
+    <!--<view class="hint">-->
+    <!--<view class="hint-head">【温馨提示】</view>-->
+    <!--<view class="hint-row">-->
+    <!--<text>-->
+    <!--*您或您的亲朋好友须在首次到访楼盘现场前30分钟，已在“阳房通”平台上自荐或被推荐，才可享受佣金及优惠政策。\r\n-->
+    <!--*推荐客户保护期为30天，30天后默认为过期用户，需要重新推荐。\r\n-->
+    <!--*此活动的解释权归该项目所有-->
+    <!--</text>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--&lt;!&ndash;&lt;!&ndash;*请准确填写被推荐客户手机号及身份证号后六位，如填写错误，认购后将视为无效推荐。\r\n&ndash;&gt;&ndash;&gt;-->
+    <!--</van-col>-->
+    <!--</van-row>-->
+    <view style="margin-bottom: 300rpx;border: none;"></view>
+    <view class="sendbtn">
+        提交信息
+        <button type="primary" bind:tap="reaveSubmit">提交信息</button>
+    </view>
+
 </view>

@@ -50,27 +50,32 @@
         <ui-count-down time="20" timetype="second" done-text="结束啦～～" format="{%s}秒"
                        bindtimeup="bindtimeup"></ui-count-down>
         <view style="padding: 10px;background-color: #F5F5F5;border-top: 1px solid #CCCCCC;">热门楼盘推荐</view>
-        <view class="recommend {{house.id == 1 ? 'div-show' : ''}}" wx:for="{{ houses }}" wx:key="house" wx:for-index="idx" wx:for-item="house">
-            <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id={{house.id}}">
-                <view>
-                    <image src="{{ house.img }}"/>
-                </view>
-                <view class="recommend-list-item">
-                    <view class="house-name">{{ house.name }}
-                        <text wx:if="{{ house.is_marketing == 1 }}" class="join-broker">全民经纪人</text>
+        <!--class边框线-->
+        <!--{{house.id == 1 ? 'div-show' : ''}}-->
+        <view class="recommend" wx:for="{{ houses }}" wx:key="house"
+              wx:for-index="idx" wx:for-item="house">
+            <block wx:if="{{ house.is_marketing == 1 }}">
+                <navigator class="recommend-list" open-type="navigate" url="/pages/house/house?house_id={{house.id}}">
+                    <view>
+                        <image src="{{ house.img }}"/>
                     </view>
-                    <view class="house-tag">
-                        <view class="house-tag-item" wx:for="{{ house.tag }}" wx:key="*this">{{item}}</view>
+                    <view class="recommend-list-item">
+                        <view class="house-name">{{ house.name }}
+                            <text wx:if="{{ house.is_marketing == 1 }}" class="join-broker">全民经纪人</text>
+                        </view>
+                        <view class="house-tag">
+                            <view class="house-tag-item" wx:for="{{ house.tag }}" wx:key="*this">{{item}}</view>
+                        </view>
+                        <view class="recommend-list-item-price">
+                            <text>参考价格 {{ house.reference }}</text>
+                            元/㎡
+                        </view>
+                        <view class="recommend-list-item-phone">
+                            <text>{{ house.phone }}</text>
+                        </view>
                     </view>
-                    <view class="recommend-list-item-price">
-                        <text>参考价格 {{ house.reference }}</text>
-                        元/㎡
-                    </view>
-                    <view class="recommend-list-item-phone">
-                        <text>{{ house.phone }}</text>
-                    </view>
-                </view>
-            </navigator>
+                </navigator>
+            </block>
         </view>
     </view>
     <!-- 回到顶部 -->

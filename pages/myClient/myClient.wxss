@@ -52,3 +52,6 @@
 .record-item:last-child {
     margin-bottom: 3%;
 }
+.tab-active {
+    color: #07c160 !important;
+}

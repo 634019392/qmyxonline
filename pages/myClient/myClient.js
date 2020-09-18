@@ -12,6 +12,7 @@ Page({
         height: '',
         currentIndex: 0,
         "allList": [],
+        "zerothList": [],
         "firstList": [],
         "secondList": [],
         "thirdList": [],
@@ -56,8 +57,12 @@ Page({
                     let remain_day = res.remain_day;
                     let status = res.status;
                     let status_class = '';
+                    let color = '';
                     let recommender_id = res.id;
                     switch (status) {
+                        case '0':
+                            color = '#7232dd';
+                            break;
                         case '1':
                             status_class = 'danger';
                             break;
@@ -74,7 +79,7 @@ Page({
                             break;
                     }
                     let info = {
-                        buyer_id,truename,phone,house,remain_day,status,status_class,recommender_id
+                        buyer_id,truename,phone,house,remain_day,status,status_class,recommender_id,color
                     };
                     if (res.status <= 4) {
                         that.setData({
@@ -82,6 +87,11 @@ Page({
                         });
                     }
                     switch(res.status) {
+                        case '0':
+                            that.setData({
+                                'zerothList': [...that.data.zerothList,info]
+                            });
+                            break;
                         case '1':
                             that.setData({
                                 'firstList': [...that.data.firstList,info]
