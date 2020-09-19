@@ -8,7 +8,7 @@ let config = require('./config');
 App({
     // 生命周期 它是小程序中第1个执行方法
     onLaunch() {
-        this.newVersionHint(); // 新版本更新提示
+        // this.newVersionHint(); // 新版本更新提示
         //隐藏系统tabbar
         // wx.hideTabBar();
         //获取设备信息
